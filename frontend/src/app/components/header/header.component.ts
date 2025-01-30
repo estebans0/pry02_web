@@ -7,8 +7,8 @@ import { NgIf } from '@angular/common';
   selector: 'app-header',
   templateUrl: './header.component.html',
   standalone: true,
-  imports: [RouterLink, NgIf]
-})
+  imports: [RouterLink]
+ })
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { MovieService } from '../../services/movie.service';
-import { AuthService } from '../../services/auth.service';
-import { Movie } from '../../models/movie.model';
+import { MovieService } from '../../../services/movie.service';
+import { AuthService } from '../../../services/auth.service';
+import { Movie } from '../../../components/shared/models/movie.model';
 import { CommonModule } from '@angular/common';
 
 @Component({

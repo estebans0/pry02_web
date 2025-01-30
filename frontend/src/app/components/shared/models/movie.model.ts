@@ -11,4 +11,5 @@ export interface Movie {
   images: string[];
   mainImage: string;
   cast: Actor[];
+  duration: string;
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MovieService } from '../../services/movie.service';
-import { ActorService } from '../../services/actor.service';
-import { Movie } from '../../models/movie.model';
-import { Actor } from '../../models/actor.model';
+import { MovieService } from '../../../services/movie.service';
+import { ActorService } from '../../../services/actor.service';
+import { Movie } from '../../../components/shared/models/movie.model';
+import { Actor } from '../../../components/shared/models/actor.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -24,7 +24,8 @@ export class MovieFormComponent implements OnInit {
     images: [],
     mainImage: '',
     cast: [],
-    id: ''
+    id: '',
+    duration: ''
   };
   actors: Actor[] = [];
   selectedActors: string[] = [];

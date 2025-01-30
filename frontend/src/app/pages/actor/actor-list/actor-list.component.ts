@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActorService } from '../../services/actor.service';
-import { AuthService } from '../../services/auth.service';
-import { Actor } from '../../models/actor.model';
+import { ActorService } from '../../../services/actor.service';
+import { AuthService } from '../../../services/auth.service';
+import { Actor } from '../../../components/shared/models/actor.model';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
