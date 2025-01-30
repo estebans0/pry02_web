@@ -1,0 +1,23 @@
+<div class="container mx-auto p-4" *ngIf="movie">
+  <div class="flex flex-col md:flex-row">
+    <div class="md:w-1/3">
+      <img [src]="movie.mainImage" alt="{{movie.title}}" class="w-full h-auto">
+    </div>
+    <div class="md:w-2/3 md:pl-4">
+      <h2 class="text-3xl font-bold mb-2">{{movie.title}}</h2>
+      <p class="mb-2">{{movie.releaseYear}} | {{movie.genre}} | Director: {{movie.director}}</p>
+      <p class="mb-4">Calificación: {{movie.rating}}/10</p>
+      <p class="mb-4">{{movie.description}}</p>
+      <h3 class="text-xl font-semibold mb-2">Reparto:</h3>
+      <ul class="list-disc pl-5 mb-4">
+        <li *ngFor="let actor of movie.cast">
+          <a [routerLink]="['/actors', actor.id]">{{actor.name}}</a>
+        </li>
+      </ul>
+      <div *ngIf="isAdmin">
+        <button (click)="editMovie()" class="bg-blue-500 text-white p-2 rounded mr-2">Editar</button>
+        <button (click)="deleteMovie()" class="bg-red-500 text-white p-2 rounded">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
