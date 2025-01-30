@@ -3,12 +3,13 @@ import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../components/shared/models/movie.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MovieListComponent } from "../movies/movie-list/movie-list.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.pages.html',
   styleUrls: ['./home.pages.scss'],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MovieListComponent],
   standalone: true,
 })
 export class HomePage implements OnInit {
