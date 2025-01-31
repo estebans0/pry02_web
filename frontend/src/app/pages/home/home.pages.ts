@@ -4,12 +4,15 @@ import { Movie } from '../../components/shared/models/movie.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MovieListComponent } from "../movies/movie-list/movie-list.component";
+import { MovieFormComponent } from "../movies/movie-form/movie-form.component";
+import { MovieDetailComponent } from "../movies/movie-detail/movie-detail.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.pages.html',
   styleUrls: ['./home.pages.scss'],
-  imports: [CommonModule, FormsModule, MovieListComponent],
+  imports: [CommonModule, FormsModule, MovieListComponent, MovieFormComponent, MovieDetailComponent, RouterModule],
   standalone: true,
 })
 export class HomePage implements OnInit {
@@ -17,7 +20,7 @@ export class HomePage implements OnInit {
     {
       title: 'Oppenheimer',
       mainImage: 'https://i.postimg.cc/7ZJXx0pc/Oppenheimer-Christopher-Nolan-0-1-width-1024-Kh9-HV7-C.jpg',
-      id: '',
+      id: '1',
       description: 'La historia de J. Robert Oppenheimer, el físico detrás de la bomba atómica.',
       genre: 'Drama',
       director: 'Christopher Nolan',
@@ -30,7 +33,7 @@ export class HomePage implements OnInit {
     {
       title: 'Oppenheimer',
       mainImage: 'https://i.postimg.cc/7ZJXx0pc/Oppenheimer-Christopher-Nolan-0-1-width-1024-Kh9-HV7-C.jpg',
-      id: '',
+      id: '1',
       description: 'La historia de J. Robert Oppenheimer, el físico detrás de la bomba atómica.',
       genre: 'Drama',
       director: 'Christopher Nolan',
@@ -43,7 +46,7 @@ export class HomePage implements OnInit {
     {
       title: 'Oppenheimer',
       mainImage: 'https://i.postimg.cc/7ZJXx0pc/Oppenheimer-Christopher-Nolan-0-1-width-1024-Kh9-HV7-C.jpg',
-      id: '',
+      id: '1',
       description: 'La historia de J. Robert Oppenheimer, el físico detrás de la bomba atómica.',
       genre: 'Drama',
       director: 'Christopher Nolan',
@@ -56,7 +59,7 @@ export class HomePage implements OnInit {
     {
       title: 'Oppenheimer',
       mainImage: 'https://i.postimg.cc/7ZJXx0pc/Oppenheimer-Christopher-Nolan-0-1-width-1024-Kh9-HV7-C.jpg',
-      id: '',
+      id: '1',
       description: 'La historia de J. Robert Oppenheimer, el físico detrás de la bomba atómica.',
       genre: 'Drama',
       director: 'Christopher Nolan',
@@ -69,7 +72,7 @@ export class HomePage implements OnInit {
     {
       title: 'Dune: Parte 2',
       mainImage: 'https://i.postimg.cc/PqzWx4K6/Dune-Part-2.jpg',
-      id: '',
+      id: '1',
       description: 'Paul Atreides continúa su camino en el desierto de Arrakis.',
       genre: 'Ciencia Ficción',
       director: 'Denis Villeneuve',
@@ -82,7 +85,7 @@ export class HomePage implements OnInit {
     {
       title: 'The Batman',
       mainImage: 'https://i.postimg.cc/mZ6QthNG/Batman-Courtesy-of-DC-Comics.jpg',
-      id: '',
+      id: '1',
       description: 'Bruce Wayne enfrenta un nuevo desafío en Gotham City.',
       genre: 'Acción',
       director: 'Matt Reeves',
@@ -99,7 +102,7 @@ export class HomePage implements OnInit {
       title: 'Joker 2',
       duration: '2:35',
       mainImage: 'https://i.postimg.cc/mZ6QthNG/Batman-Courtesy-of-DC-Comics.jpg',
-      id: '',
+      id: '1',
       description: '',
       genre: '',
       director: '',
@@ -112,7 +115,7 @@ export class HomePage implements OnInit {
       title: 'Avatar 3',
       duration: '3:00',
       mainImage: 'https://i.postimg.cc/mZ6QthNG/Batman-Courtesy-of-DC-Comics.jpg',
-      id: '',
+      id: '1',
       description: '',
       genre: '',
       director: '',
@@ -125,7 +128,7 @@ export class HomePage implements OnInit {
       title: 'Deadpool 3',
       duration: '2:15',
       mainImage: 'https://i.postimg.cc/mZ6QthNG/Batman-Courtesy-of-DC-Comics.jpg',
-      id: '',
+      id: '1',
       description: '',
       genre: '',
       director: '',

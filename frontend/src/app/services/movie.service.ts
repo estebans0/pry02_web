@@ -7,8 +7,7 @@ import { Movie } from '../components/shared/models/movie.model';
   providedIn: 'root'
 })
 export class MovieService {
-  // Sin el signo '$' en la URL
-  private apiUrl = 'http://localhost:3000/api/movies';
+  private apiUrl = 'http://localhost:5000/api/movies';
 
   constructor(private http: HttpClient) {}
 
