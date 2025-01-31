@@ -28,7 +28,9 @@ export class HomePage implements OnInit {
       rating: 8.9,
       images: [],
       cast: [],
-      duration: '3:00'
+      duration: '3:00',
+      tags: [],
+      votes: 0
     },
     {
       title: 'Oppenheimer',
@@ -41,7 +43,9 @@ export class HomePage implements OnInit {
       rating: 8.9,
       images: [],
       cast: [],
-      duration: '3:00'
+      duration: '3:00',
+      tags: [],
+      votes: 0
     },
     {
       title: 'Oppenheimer',
@@ -54,7 +58,9 @@ export class HomePage implements OnInit {
       rating: 8.9,
       images: [],
       cast: [],
-      duration: '3:00'
+      duration: '3:00',
+      tags: [],
+      votes: 0
     },
     {
       title: 'Oppenheimer',
@@ -67,7 +73,9 @@ export class HomePage implements OnInit {
       rating: 8.9,
       images: [],
       cast: [],
-      duration: '3:00'
+      duration: '3:00',
+      tags: [],
+      votes: 0
     },
     {
       title: 'Dune: Parte 2',
@@ -79,8 +87,10 @@ export class HomePage implements OnInit {
       releaseYear: 2024,
       rating: 9.0,
       images: [],
+      duration: '2:45',
+      tags: [],
       cast: [],
-      duration: '2:45'
+      votes: 0
     },
     {
       title: 'The Batman',
@@ -91,9 +101,11 @@ export class HomePage implements OnInit {
       director: 'Matt Reeves',
       releaseYear: 2022,
       rating: 8.3,
-      images: [],
+      duration: '2:56',
+      tags: [],
       cast: [],
-      duration: '2:56'
+      images: [],
+      votes: 0
     }
   ];
 
@@ -106,10 +118,12 @@ export class HomePage implements OnInit {
       description: '',
       genre: '',
       director: '',
-      releaseYear: 2024,
+      cast: [],
+      tags: [],
       rating: 0,
       images: [],
-      cast: []
+      releaseYear: 0,
+      votes: 0
     },
     {
       title: 'Avatar 3',
@@ -122,7 +136,9 @@ export class HomePage implements OnInit {
       releaseYear: 2025,
       rating: 0,
       images: [],
-      cast: []
+      cast: [],
+      tags: [],
+      votes: 0
     },
     {
       title: 'Deadpool 3',
@@ -135,7 +151,9 @@ export class HomePage implements OnInit {
       releaseYear: 2024,
       rating: 0,
       images: [],
-      cast: []
+      cast: [],
+      tags: [],
+      votes: 0
     },
 
   ];
