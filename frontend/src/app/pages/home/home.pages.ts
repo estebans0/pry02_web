@@ -7,12 +7,14 @@ import { MovieListComponent } from "../movies/movie-list/movie-list.component";
 import { MovieFormComponent } from "../movies/movie-form/movie-form.component";
 import { MovieDetailComponent } from "../movies/movie-detail/movie-detail.component";
 import { RouterModule } from '@angular/router';
+import { ActorDetailComponent } from "../actor/actor-detail/actor-detail.component";
+import { ActorListComponent } from "../actor/actor-list/actor-list.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.pages.html',
   styleUrls: ['./home.pages.scss'],
-  imports: [CommonModule, FormsModule, MovieListComponent, RouterModule],
+  imports: [CommonModule, FormsModule, MovieListComponent, RouterModule, ActorDetailComponent, ActorListComponent],
   standalone: true,
 })
 export class HomePage implements OnInit {
