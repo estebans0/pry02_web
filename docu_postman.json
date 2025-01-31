@@ -1,0 +1,1831 @@
+{
+	"info": {
+		"_postman_id": "527e5d14-2113-48cc-87a1-ac37a2937b72",
+		"name": "PRY02_WEB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37669841"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"estebanjs29\",\r\n  \"email\": \"estebanjs029@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"estebanjs29\",\r\n  \"email\": \"estebanjs029@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "320"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"140-wJjH0DfVy67L+1ef2brOYiYkpF0\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Jan 2025 23:26:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario registrado exitosamente\",\n    \"user\": {\n        \"username\": \"estebanjs29\",\n        \"email\": \"estebanjs029@gmail.com\",\n        \"password\": \"$2b$10$ZIB.kV126wMmKOsCKXU1cuVVkfBNW5J/u07aKFr3XJNoS4zHBlL3G\",\n        \"role\": \"admin\",\n        \"_id\": \"679c0a96e86b0ed97c1e2884\",\n        \"createdAt\": \"2025-01-30T23:26:14.715Z\",\n        \"updatedAt\": \"2025-01-30T23:26:14.715Z\",\n        \"__v\": 0\n    }\n}"
+				},
+				{
+					"name": "Success2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"estebanjs\",\r\n  \"email\": \"estebanjsa@icloud.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "316"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"13c-s5cmPHa2+VvD04UnEyaY/jlgyZg\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Jan 2025 23:38:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario registrado exitosamente\",\n    \"user\": {\n        \"username\": \"estebanjs\",\n        \"email\": \"estebanjsa@icloud.com\",\n        \"password\": \"$2b$10$jDCVXo.fZZHjO1Cj0vZGwO82seQRUzOe8b1rF2B7Qu.EOzI4IBl5K\",\n        \"role\": \"user\",\n        \"_id\": \"679c0d82e86b0ed97c1e288a\",\n        \"createdAt\": \"2025-01-30T23:38:42.298Z\",\n        \"updatedAt\": \"2025-01-30T23:38:42.298Z\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"estebanjs029@gmail.com\",\r\n  \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"estebanjs029@gmail.com\",\r\n  \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "322"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"142-sSS3aF4whuJRLFuvzWhBFaJH1NI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Jan 2025 23:29:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Inicio de sesión exitoso\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWMwYTk2ZTg2YjBlZDk3YzFlMjg4NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI3OTc1NiwiZXhwIjoxNzM4MzY2MTU2fQ.NH-qDjEvIY_EcJn-VSJSfMkbFxf5ytZ8-VR-SX_MhzM\",\n    \"user\": {\n        \"id\": \"679c0a96e86b0ed97c1e2884\",\n        \"username\": \"estebanjs29\",\n        \"role\": \"admin\"\n    }\n}"
+				},
+				{
+					"name": "Success2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"estebanjsa@icloud.com\",\r\n  \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "317"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"13d-+HDuJY9PwnmRs9ipckxdVIv/ISI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Jan 2025 23:39:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Inicio de sesión exitoso\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWMwZDgyZTg2YjBlZDk3YzFlMjg4YSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM4MjgwMzg4LCJleHAiOjE3MzgzNjY3ODh9.-ml0wQyACYLQ1rTrxdvYv4PID083tK2bpeuNz0Fh6-Q\",\n    \"user\": {\n        \"id\": \"679c0d82e86b0ed97c1e288a\",\n        \"username\": \"estebanjs\",\n        \"role\": \"user\"\n    }\n}"
+				},
+				{
+					"name": "Fail",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"test@fail.com\",\r\n  \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-JSRW9gLnj2QO2L4Ol9yuL1roz+Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Jan 2025 23:40:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario no encontrado.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "CrearPelicula (Admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWMwYTk2ZTg2YjBlZDk3YzFlMjg4NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI4MDQ5NywiZXhwIjoxNzM4MzY2ODk3fQ.0jzFljtyhIaU_c7sHueO0BvF5JZbhR92u8CAOCl4V-Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"El Señor de los Anillos 2\",\r\n  \"description\": \"Trilogía épica de fantasía\",\r\n  \"genre\": [\"Fantasy\", \"Adventure\"],\r\n  \"director\": \"Peter Jackson\",\r\n  \"releaseYear\": 2001,\r\n  \"rating\": 9,\r\n  \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BZWZlY2RiMGQtOWMyNC00OTk3LWIzYzEtMWYzMTkwYzQzNzZiXkEyXkFqcGc@._V1_.jpg\",\r\n  \"images\": [\"https://i0.wp.com/elanillounico.com/wp-content/uploads/2022/05/cubiertasamazon.jpg?ssl=1\", \"https://es.web.img3.acsta.net/pictures/22/10/04/16/26/1929878.jpg\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/movies",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"El Señor de los Anillos\",\r\n  \"description\": \"Trilogía épica de fantasía\",\r\n  \"genre\": [\"Fantasy\", \"Adventure\"],\r\n  \"director\": \"Peter Jackson\",\r\n  \"releaseYear\": 2001,\r\n  \"rating\": 9,\r\n  \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BZWZlY2RiMGQtOWMyNC00OTk3LWIzYzEtMWYzMTkwYzQzNzZiXkEyXkFqcGc@._V1_.jpg\",\r\n  \"images\": [\"https://i0.wp.com/elanillounico.com/wp-content/uploads/2022/05/cubiertasamazon.jpg?ssl=1\", \"https://es.web.img3.acsta.net/pictures/22/10/04/16/26/1929878.jpg\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/movies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "633"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"279-1uJ/WFBMLzoTBRYit9mJeMa7VVM\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Jan 2025 23:37:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Película creada\",\n    \"movie\": {\n        \"title\": \"El Señor de los Anillos\",\n        \"description\": \"Trilogía épica de fantasía\",\n        \"genre\": [\n            \"Fantasy\",\n            \"Adventure\"\n        ],\n        \"director\": \"Peter Jackson\",\n        \"releaseYear\": 2001,\n        \"rating\": 9,\n        \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BZWZlY2RiMGQtOWMyNC00OTk3LWIzYzEtMWYzMTkwYzQzNzZiXkEyXkFqcGc@._V1_.jpg\",\n        \"images\": [\n            \"https://i0.wp.com/elanillounico.com/wp-content/uploads/2022/05/cubiertasamazon.jpg?ssl=1\",\n            \"https://es.web.img3.acsta.net/pictures/22/10/04/16/26/1929878.jpg\"\n        ],\n        \"_id\": \"679c0d2be86b0ed97c1e2887\",\n        \"cast\": [],\n        \"createdAt\": \"2025-01-30T23:37:15.916Z\",\n        \"updatedAt\": \"2025-01-30T23:37:15.916Z\",\n        \"__v\": 0\n    }\n}"
+				},
+				{
+					"name": "Fail",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"El Señor de los Anillos\",\r\n  \"description\": \"Trilogía épica de fantasía\",\r\n  \"genre\": [\"Fantasy\", \"Adventure\"],\r\n  \"director\": \"Peter Jackson\",\r\n  \"releaseYear\": 2001,\r\n  \"rating\": 9,\r\n  \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BZWZlY2RiMGQtOWMyNC00OTk3LWIzYzEtMWYzMTkwYzQzNzZiXkEyXkFqcGc@._V1_.jpg\",\r\n  \"images\": [\"https://i0.wp.com/elanillounico.com/wp-content/uploads/2022/05/cubiertasamazon.jpg?ssl=1\", \"https://es.web.img3.acsta.net/pictures/22/10/04/16/26/1929878.jpg\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/movies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"33-5FNcss/HaPxfdCNUobBZ47BZewo\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Jan 2025 23:41:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No tienes permisos para esta acción.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar Peliculas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/movies?page=1&limit=5&title=señor&genre=Fantasy",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "title",
+							"value": "señor"
+						},
+						{
+							"key": "genre",
+							"value": "Fantasy"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/movies?page=1&limit=5&title=señor&genre=Fantasy",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "title",
+									"value": "señor"
+								},
+								{
+									"key": "genre",
+									"value": "Fantasy"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "636"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27c-Zf0FbE3OfkwvHzDL2iKn+3o0Txg\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Jan 2025 23:47:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"movies\": [\n        {\n            \"_id\": \"679c0d2be86b0ed97c1e2887\",\n            \"title\": \"El Señor de los Anillos\",\n            \"description\": \"Trilogía épica de fantasía\",\n            \"genre\": [\n                \"Fantasy\",\n                \"Adventure\"\n            ],\n            \"director\": \"Peter Jackson\",\n            \"releaseYear\": 2001,\n            \"rating\": 9,\n            \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BZWZlY2RiMGQtOWMyNC00OTk3LWIzYzEtMWYzMTkwYzQzNzZiXkEyXkFqcGc@._V1_.jpg\",\n            \"images\": [\n                \"https://i0.wp.com/elanillounico.com/wp-content/uploads/2022/05/cubiertasamazon.jpg?ssl=1\",\n                \"https://es.web.img3.acsta.net/pictures/22/10/04/16/26/1929878.jpg\"\n            ],\n            \"cast\": [],\n            \"createdAt\": \"2025-01-30T23:37:15.916Z\",\n            \"updatedAt\": \"2025-01-30T23:37:15.916Z\",\n            \"__v\": 0\n        }\n    ],\n    \"total\": 1,\n    \"page\": 1,\n    \"pages\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Detalles Pelicula",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/movies/679c0d2be86b0ed97c1e2887",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"movies",
+						"679c0d2be86b0ed97c1e2887"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/movies/679c0d2be86b0ed97c1e2887",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies",
+								"679c0d2be86b0ed97c1e2887"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "594"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"252-PK0iCjMpwjNRdekejAoLuRDJb2A\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Jan 2025 23:55:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"679c0d2be86b0ed97c1e2887\",\n    \"title\": \"El Señor de los Anillos\",\n    \"description\": \"Trilogía épica de fantasía\",\n    \"genre\": [\n        \"Fantasy\",\n        \"Adventure\"\n    ],\n    \"director\": \"Peter Jackson\",\n    \"releaseYear\": 2001,\n    \"rating\": 9,\n    \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BZWZlY2RiMGQtOWMyNC00OTk3LWIzYzEtMWYzMTkwYzQzNzZiXkEyXkFqcGc@._V1_.jpg\",\n    \"images\": [\n        \"https://i0.wp.com/elanillounico.com/wp-content/uploads/2022/05/cubiertasamazon.jpg?ssl=1\",\n        \"https://es.web.img3.acsta.net/pictures/22/10/04/16/26/1929878.jpg\"\n    ],\n    \"cast\": [],\n    \"createdAt\": \"2025-01-30T23:37:15.916Z\",\n    \"updatedAt\": \"2025-01-30T23:37:15.916Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar Pelicula (Admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWMwYTk2ZTg2YjBlZDk3YzFlMjg4NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI4MDQ5NywiZXhwIjoxNzM4MzY2ODk3fQ.0jzFljtyhIaU_c7sHueO0BvF5JZbhR92u8CAOCl4V-Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"El Señor de los Anillos: La Comunidad del Anillo (Extended)\",\r\n  \"rating\": 9.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/movies/679c0d2be86b0ed97c1e2887",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"movies",
+						"679c0d2be86b0ed97c1e2887"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fail1",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"El Señor de los Anillos: La Comunidad del Anillo (Extended)\",\r\n  \"rating\": 9.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/movies/679c0d2be86b0ed97c1e2887",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies",
+								"679c0d2be86b0ed97c1e2887"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "59"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3b-d+9iztPPA2uSsx5PgaUpJ+u2oiE\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:05:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Acceso denegado. No se proporcionó un token.\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"El Señor de los Anillos: La Comunidad del Anillo (Extended)\",\r\n  \"rating\": 9.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/movies/679c0d2be86b0ed97c1e2887",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies",
+								"679c0d2be86b0ed97c1e2887"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "676"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2a4-oVZgAtDiNq5jNHPAOkAhAajZoTY\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:05:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Película actualizada\",\n    \"movie\": {\n        \"_id\": \"679c0d2be86b0ed97c1e2887\",\n        \"title\": \"El Señor de los Anillos: La Comunidad del Anillo (Extended)\",\n        \"description\": \"Trilogía épica de fantasía\",\n        \"genre\": [\n            \"Fantasy\",\n            \"Adventure\"\n        ],\n        \"director\": \"Peter Jackson\",\n        \"releaseYear\": 2001,\n        \"rating\": 9.5,\n        \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BZWZlY2RiMGQtOWMyNC00OTk3LWIzYzEtMWYzMTkwYzQzNzZiXkEyXkFqcGc@._V1_.jpg\",\n        \"images\": [\n            \"https://i0.wp.com/elanillounico.com/wp-content/uploads/2022/05/cubiertasamazon.jpg?ssl=1\",\n            \"https://es.web.img3.acsta.net/pictures/22/10/04/16/26/1929878.jpg\"\n        ],\n        \"cast\": [],\n        \"createdAt\": \"2025-01-30T23:37:15.916Z\",\n        \"updatedAt\": \"2025-01-31T00:05:45.104Z\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar Pelicula (Admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWMwYTk2ZTg2YjBlZDk3YzFlMjg4NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI3OTc1NiwiZXhwIjoxNzM4MzY2MTU2fQ.NH-qDjEvIY_EcJn-VSJSfMkbFxf5ytZ8-VR-SX_MhzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/movies/679c1451e86b0ed97c1e2897",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"movies",
+						"679c1451e86b0ed97c1e2897"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fail",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/movies/679c1451e86b0ed97c1e2897",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies",
+								"679c1451e86b0ed97c1e2897"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"33-5FNcss/HaPxfdCNUobBZ47BZewo\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:08:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No tienes permisos para esta acción.\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/movies/679c1451e86b0ed97c1e2897",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies",
+								"679c1451e86b0ed97c1e2897"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21-RuKG0mUX/OlRXd1jtdvuGZOw57U\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:09:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Película eliminada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear Actor (Admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWMwYTk2ZTg2YjBlZDk3YzFlMjg4NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI3OTc1NiwiZXhwIjoxNzM4MzY2MTU2fQ.NH-qDjEvIY_EcJn-VSJSfMkbFxf5ytZ8-VR-SX_MhzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Ian McKellen\",\r\n  \"birthDate\": \"1939-05-25\",\r\n  \"biography\": \"Sir Ian Murray McKellen is an English actor. With a career spanning more than sixty years, he is noted for his roles on the screen and stage in genres ranging from Shakespearean dramas and modern theatre to popular fantasy and science fiction.\",\r\n  \"mainImage\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/SDCC13_-_Ian_McKellen.jpg/800px-SDCC13_-_Ian_McKellen.jpg\",\r\n  \"images\": [\"https://m.media-amazon.com/images/M/MV5BMTQ2MjgyNjk3MV5BMl5BanBnXkFtZTcwNTA3NTY5Mg@@._V1_.jpg\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/actors",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actors"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fail",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Elijah Wood\",\r\n  \"birthDate\": \"1981-01-28\",\r\n  \"biography\": \"Actor estadounidense...\",\r\n  \"mainImage\": \"https://example.com/elijah.jpg\",\r\n  \"images\": [\"https://example.com/elijah1.jpg\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"33-5FNcss/HaPxfdCNUobBZ47BZewo\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:11:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No tienes permisos para esta acción.\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Elijah Wood\",\r\n  \"birthDate\": \"1981-01-28\",\r\n  \"biography\": \"Actor estadounidense...\",\r\n  \"mainImage\": \"https://example.com/elijah.jpg\",\r\n  \"images\": [\"https://example.com/elijah1.jpg\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "277"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"115-csVZxX9Zk43DTYUd3Apr2Vk6P8g\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:12:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Actor creado\",\n    \"actor\": {\n        \"name\": \"Elijah Wood\",\n        \"birthDate\": \"1981-01-28T00:00:00.000Z\",\n        \"biography\": \"Actor estadounidense...\",\n        \"images\": [],\n        \"movies\": [],\n        \"_id\": \"679c1561e86b0ed97c1e289b\",\n        \"createdAt\": \"2025-01-31T00:12:17.707Z\",\n        \"updatedAt\": \"2025-01-31T00:12:17.707Z\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar Actores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/actors?page=1&limit=10&name=Elijah",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actors"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "name",
+							"value": "Elijah"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/actors?page=1&limit=10&name=Elijah",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actors"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "name",
+									"value": "Elijah"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "284"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11c-F+wjumD0NhV+iubFu+D0YziOj9s\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:13:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"actors\": [\n        {\n            \"_id\": \"679c1561e86b0ed97c1e289b\",\n            \"name\": \"Elijah Wood\",\n            \"birthDate\": \"1981-01-28T00:00:00.000Z\",\n            \"biography\": \"Actor estadounidense...\",\n            \"images\": [],\n            \"movies\": [],\n            \"createdAt\": \"2025-01-31T00:12:17.707Z\",\n            \"updatedAt\": \"2025-01-31T00:12:17.707Z\",\n            \"__v\": 0\n        }\n    ],\n    \"total\": 1,\n    \"page\": 1,\n    \"pages\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Detalles Actor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/actors/679c1561e86b0ed97c1e289b",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actors",
+						"679c1561e86b0ed97c1e289b"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/actors/679c1561e86b0ed97c1e289b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actors",
+								"679c1561e86b0ed97c1e289b"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "242"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f2-N80QYf93ZqzrKRJ4a5L2yc5HbJU\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:14:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"679c1561e86b0ed97c1e289b\",\n    \"name\": \"Elijah Wood\",\n    \"birthDate\": \"1981-01-28T00:00:00.000Z\",\n    \"biography\": \"Actor estadounidense...\",\n    \"images\": [],\n    \"movies\": [],\n    \"createdAt\": \"2025-01-31T00:12:17.707Z\",\n    \"updatedAt\": \"2025-01-31T00:12:17.707Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar Actor (Admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWMwYTk2ZTg2YjBlZDk3YzFlMjg4NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI3OTc1NiwiZXhwIjoxNzM4MzY2MTU2fQ.NH-qDjEvIY_EcJn-VSJSfMkbFxf5ytZ8-VR-SX_MhzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"biography\": \"Biografía actualizada...\",\r\n  \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BMTM0NDIxMzQ5OF5BMl5BanBnXkFtZTcwNzAyNTA4Nw@@._V1_FMjpg_UX1000_.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/actors/679c1561e86b0ed97c1e289b",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actors",
+						"679c1561e86b0ed97c1e289b"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fail",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"biography\": \"Biografía actualizada...\",\r\n  \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BMTM0NDIxMzQ5OF5BMl5BanBnXkFtZTcwNzAyNTA4Nw@@._V1_FMjpg_UX1000_.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actors/679c1561e86b0ed97c1e289b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actors",
+								"679c1561e86b0ed97c1e289b"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"33-5FNcss/HaPxfdCNUobBZ47BZewo\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:16:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No tienes permisos para esta acción.\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"biography\": \"Biografía actualizada...\",\r\n  \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BMTM0NDIxMzQ5OF5BMl5BanBnXkFtZTcwNzAyNTA4Nw@@._V1_FMjpg_UX1000_.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/actors/679c1561e86b0ed97c1e289b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actors",
+								"679c1561e86b0ed97c1e289b"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "405"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"195-78zsmAPVoOdFRqhF1DmAqI4gUps\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:17:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Actor actualizado\",\n    \"actor\": {\n        \"_id\": \"679c1561e86b0ed97c1e289b\",\n        \"name\": \"Elijah Wood\",\n        \"birthDate\": \"1981-01-28T00:00:00.000Z\",\n        \"biography\": \"Biografía actualizada...\",\n        \"images\": [],\n        \"movies\": [],\n        \"createdAt\": \"2025-01-31T00:12:17.707Z\",\n        \"updatedAt\": \"2025-01-31T00:17:30.569Z\",\n        \"__v\": 0,\n        \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BMTM0NDIxMzQ5OF5BMl5BanBnXkFtZTcwNzAyNTA4Nw@@._V1_FMjpg_UX1000_.jpg\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar Actor (Admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWMwZDgyZTg2YjBlZDk3YzFlMjg4YSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM4MjgwMzg4LCJleHAiOjE3MzgzNjY3ODh9.-ml0wQyACYLQ1rTrxdvYv4PID083tK2bpeuNz0Fh6-Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/actors/679c1777e86b0ed97c1e28a1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actors",
+						"679c1777e86b0ed97c1e28a1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/actors/679c1777e86b0ed97c1e28a1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actors",
+								"679c1777e86b0ed97c1e28a1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1d-JCSeNVXbX1Nb9WTw22E3/GsDyKE\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:21:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Actor eliminado\"\n}"
+				},
+				{
+					"name": "Fail",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/actors/679c1777e86b0ed97c1e28a1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"actors",
+								"679c1777e86b0ed97c1e28a1"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"33-5FNcss/HaPxfdCNUobBZ47BZewo\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:22:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No tienes permisos para esta acción.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Agregar Actor a Reparto (Admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWMwYTk2ZTg2YjBlZDk3YzFlMjg4NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI4MzE0MSwiZXhwIjoxNzM4MzY5NTQxfQ.NPQ8Pq06ktAiu5ZKpWLFhxM1-uEk1ypGhN2y7y-pThU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"actorId\": \"679c1561e86b0ed97c1e289b\",\r\n  \"characterName\": \"Frodo Baggins\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/movies/679c0d2be86b0ed97c1e2887/add-actor",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"movies",
+						"679c0d2be86b0ed97c1e2887",
+						"add-actor"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"actorId\": \"679c1561e86b0ed97c1e289b\",\r\n  \"characterName\": \"Frodo Baggins\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/movies/679c0d2be86b0ed97c1e2887/add-actor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movies",
+								"679c0d2be86b0ed97c1e2887",
+								"add-actor"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "781"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"30d-1dFSLxioYtVTYVcl5NSQL6gOGSw\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jan 2025 00:26:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Actor añadido al reparto\",\n    \"movie\": {\n        \"_id\": \"679c0d2be86b0ed97c1e2887\",\n        \"title\": \"El Señor de los Anillos: La Comunidad del Anillo (Extended)\",\n        \"description\": \"Trilogía épica de fantasía\",\n        \"genre\": [\n            \"Fantasy\",\n            \"Adventure\"\n        ],\n        \"director\": \"Peter Jackson\",\n        \"releaseYear\": 2001,\n        \"rating\": 9.5,\n        \"mainImage\": \"https://m.media-amazon.com/images/M/MV5BZWZlY2RiMGQtOWMyNC00OTk3LWIzYzEtMWYzMTkwYzQzNzZiXkEyXkFqcGc@._V1_.jpg\",\n        \"images\": [\n            \"https://i0.wp.com/elanillounico.com/wp-content/uploads/2022/05/cubiertasamazon.jpg?ssl=1\",\n            \"https://es.web.img3.acsta.net/pictures/22/10/04/16/26/1929878.jpg\"\n        ],\n        \"cast\": [\n            {\n                \"actor\": \"679c1561e86b0ed97c1e289b\",\n                \"characterName\": \"Frodo Baggins\",\n                \"_id\": \"679c18c8e86b0ed97c1e28a9\"\n            }\n        ],\n        \"createdAt\": \"2025-01-30T23:37:15.916Z\",\n        \"updatedAt\": \"2025-01-31T00:26:48.324Z\",\n        \"__v\": 1\n    }\n}"
+				}
+			]
+		}
+	]
+}
