@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-home',
   templateUrl: './home.pages.html',
   styleUrls: ['./home.pages.scss'],
-  imports: [CommonModule, FormsModule, MovieListComponent, MovieFormComponent, MovieDetailComponent, RouterModule],
+  imports: [CommonModule, FormsModule, MovieListComponent, RouterModule],
   standalone: true,
 })
 export class HomePage implements OnInit {
