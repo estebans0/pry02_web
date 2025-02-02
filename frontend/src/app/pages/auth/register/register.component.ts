@@ -3,39 +3,43 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SuccessModalComponent } from '../../../components/shared/success-modal.component';
 import { User } from '../../../components/shared/models/user.model';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, SuccessModalComponent]
 })
 export class RegisterComponent {
   username = '';
   email = '';
   password = '';
+  showModal = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(): void {
     const user: User = {
-      username: this.username.trim(),  // Quitar espacios en blanco
+      username: this.username.trim(),
       email: this.email.trim().toLowerCase(),
       password: this.password,
       role: 'user'
     };
 
-    console.log('Registrando usuario:', user);  // Debug: Verificar qué se está enviando
-
     this.authService.register(user).subscribe({
-      next: (response) => {
-        console.log('Registro exitoso:', response); // Verificar respuesta del backend
-        this.router.navigate(['/login']);
+      next: () => {
+        this.showModal = true; // 📌 Mostrar modal
       },
       error: (err) => {
-        console.error('Error registering:', err);
+        console.error('Error registering', err);
       }
     });
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+    this.router.navigate(['/login']);
   }
 }

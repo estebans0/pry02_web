@@ -13,6 +13,9 @@ export class AuthService {
   // Estado del usuario (admin/user)
   private isAdminSubject = new BehaviorSubject<boolean>(false);
   public isAdmin$: Observable<boolean> = this.isAdminSubject.asObservable();
+  // 📌 Nueva variable para manejar cambios en usuario
+  private userStatusSubject = new BehaviorSubject<boolean>(false);
+  public userStatus$ = this.userStatusSubject.asObservable();
 
   constructor(private http: HttpClient) {
     this.checkAdminStatus(); // Verifica el estado de admin al iniciar
@@ -39,6 +42,7 @@ export class AuthService {
           localStorage.setItem('role', response.user.role);
           localStorage.setItem('username', response.user.username || '');
           this.setAdminStatus(response.user.role === 'admin');
+          this.userStatusSubject.next(true); // 📌 Notifica a los suscriptores
         }
       })
     );
@@ -52,6 +56,7 @@ export class AuthService {
     localStorage.removeItem('role');
     localStorage.removeItem('username');
     this.setAdminStatus(false);
+    this.userStatusSubject.next(false); // 📌 Notifica que se cerró sesión
   }
 
   /**
@@ -80,6 +85,7 @@ export class AuthService {
    */
   setAdminStatus(isAdmin: boolean): void {
     this.isAdminSubject.next(isAdmin);
+    this.userStatusSubject.next(isAdmin);
   }
 
   /**

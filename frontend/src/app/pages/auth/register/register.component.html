@@ -46,4 +46,13 @@
       Registrarse
     </button>
   </form>
+
+  <!-- 📌 Modal de éxito -->
+  <app-success-modal
+    *ngIf="showModal"
+    title="¡Registro Exitoso!"
+    message="Tu cuenta ha sido creada correctamente."
+    buttonText="Iniciar Sesión"
+    (closeModal)="closeModal()"
+  ></app-success-modal>
 </div>

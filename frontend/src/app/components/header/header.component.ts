@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    this.updateUserStatus(); // 📌 Cargar valores iniciales
     this.isLoggedIn = this.authService.isLoggedIn();
     this.isAdmin = this.authService.isAdmin();
     this.username = localStorage.getItem('username');
@@ -26,6 +28,17 @@ export class HeaderComponent implements OnInit {
     this.authService.isAdmin$.subscribe((isAdmin) => {
       this.isAdmin = isAdmin;
     });
+
+    // 📌 Suscribirse a cambios en el AuthService
+    this.authService.userStatus$.subscribe(() => {
+      this.updateUserStatus();
+    });
+  }
+
+  updateUserStatus(): void {
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.isAdmin = this.authService.isAdmin();
+    this.username = localStorage.getItem('username');
   }
 
   logout(): void {
