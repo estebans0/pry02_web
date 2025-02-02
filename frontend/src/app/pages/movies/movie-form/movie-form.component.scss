@@ -1,0 +1,19 @@
+section {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .flex.overflow-x-auto {
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+  }
+  
+  .flex.overflow-x-auto::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .flex.overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 10px;
+  }
+  

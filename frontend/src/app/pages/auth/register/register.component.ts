@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { User } from '../../../models/user.model'; // Asegúrate de la ruta correcta
+import { User } from '../../../components/shared/models/user.model'; // Asegúrate de la ruta correcta
 
 @Component({
   selector: 'app-register',

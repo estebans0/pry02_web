@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MovieService } from '../../services/movie.service';
-import { AuthService } from '../../services/auth.service';
-import { Movie } from '../../models/movie.model';
+import { MovieService } from '../../../services/movie.service';
+import { AuthService } from '../../../services/auth.service';
+import { Movie } from '../../../components/shared/models/movie.model';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule]
+  imports: [CommonModule, FormsModule]
 })
 export class MovieListComponent implements OnInit {
   movies: Movie[] = [];
@@ -31,9 +31,10 @@ export class MovieListComponent implements OnInit {
     this.authService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin);
   }
 
+  
   loadMovies(): void {
     this.movieService.getMovies().subscribe(
-      (movies) => {
+      (movies: Movie[]) => {
         this.movies = movies;
         this.filteredMovies = movies;
         this.extractGenres();
@@ -41,6 +42,7 @@ export class MovieListComponent implements OnInit {
       (error) => console.error('Error fetching movies', error)
     );
   }
+  
 
   extractGenres(): void {
     this.genres = [...new Set(this.movies.map(movie => movie.genre))];
@@ -71,4 +73,8 @@ export class MovieListComponent implements OnInit {
         return 0;
       });
   }
+}
+
+function of(movies: Movie[]): Observable<Movie[]> {
+  throw new Error('Function not implemented.');
 }

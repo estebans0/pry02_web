@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MovieService } from '../../services/movie.service';
-import { ActorService } from '../../services/actor.service';
-import { Movie } from '../../models/movie.model';
-import { Actor } from '../../models/actor.model';
+import { MovieService } from '../../../services/movie.service';
+import { ActorService } from '../../../services/actor.service';
+import { Movie } from '../../../components/shared/models/movie.model';
+import { Actor } from '../../../components/shared/models/actor.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MovieActor } from '../../../components/shared/models/movie-actor.model';
+
 
 @Component({
   selector: 'app-movie-form',
@@ -24,7 +26,10 @@ export class MovieFormComponent implements OnInit {
     images: [],
     mainImage: '',
     cast: [],
-    id: ''
+    id: '',
+    duration: '',
+    tags: [],
+    votes: 0
   };
   actors: Actor[] = [];
   selectedActors: string[] = [];
@@ -54,7 +59,7 @@ export class MovieFormComponent implements OnInit {
   }
 
   loadMovie(id: string): void {
-    this.movieService.getMovie(id).subscribe(
+    this.movieService.getMovieById(id).subscribe(
       (movie) => {
         this.movie = movie;
         this.selectedActors = movie.cast.map(actor => actor.id).filter((id): id is string => id !== undefined);
@@ -75,7 +80,15 @@ export class MovieFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.movie.cast = this.selectedActors.map(id => ({ id } as Actor));
+    // Convertir Actor[] a MovieActor[]
+    this.movie.cast = this.selectedActors.map(actorId => {
+      const actor = this.actors.find(a => a.id === actorId);
+      return {
+        id: actor?.id ?? '',  // Asegurar que el ID no sea undefined
+        name: actor?.name ?? ''
+      };
+    }) as MovieActor[];
+  
     if (this.isEditing) {
       this.movieService.updateMovie(this.movie.id, this.movie).subscribe(
         () => this.router.navigate(['/movies', this.movie.id]),

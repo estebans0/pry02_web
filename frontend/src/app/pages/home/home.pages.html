@@ -1,0 +1,68 @@
+<app-movie-list></app-movie-list>
+
+<div class="bg-black text-white min-h-screen p-6 flex justify-center">
+  
+  <!-- Contenedor principal con dos columnas -->
+  <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
+    
+    <!-- Sección del Carrusel (Ocupa 2 columnas en pantallas grandes) -->
+    <section class="lg:col-span-2 relative">
+      <div class="relative">
+        
+        <!-- Imagen del Carrusel con Enlace -->
+        <a [routerLink]="['/movies', featuredMovie.id]">
+          <img [src]="featuredMovie.mainImage" alt="Destacado" class="w-full h-[500px] object-cover rounded-lg shadow-lg">
+        </a>
+
+        <!-- Contenido del Carrusel -->
+        <div class="absolute bottom-8 left-8 bg-black bg-opacity-70 p-6 rounded-lg">
+          <h2 class="text-4xl font-bold text-yellow-400">{{ featuredMovie.title }}</h2>
+          <p class="text-gray-300">{{ featuredMovie.description }}</p>
+          <a [routerLink]="['/movies', featuredMovie.id]" class="mt-4 bg-yellow-500 text-black px-6 py-3 rounded-lg font-bold hover:bg-yellow-600">
+            ▶ Ver Detalles
+          </a>
+        </div>
+
+        <!-- Botón Anterior -->
+        <button (click)="prevMovie()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 text-white p-2 rounded-full">
+          ❮
+        </button>
+
+        <!-- Botón Siguiente -->
+        <button (click)="nextMovie()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 text-white p-2 rounded-full">
+          ❯
+        </button>
+      </div>
+    </section>
+
+    <!-- Sección Próximamente (Ocupa 1 columna) -->
+    <section class="lg:col-span-1 bg-gray-900 p-4 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold mb-4 text-yellow-400">Próximamente</h2>
+      <div class="space-y-4">
+        <div *ngFor="let movie of upcomingMovies" class="flex items-center bg-gray-800 rounded-lg overflow-hidden">
+          <a [routerLink]="['/movies', movie.id]">
+            <img [src]="movie.mainImage" alt="{{ movie.title }}" class="w-24 h-24 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-white font-semibold">{{ movie.title }}</h3>
+            <p class="text-gray-400 text-sm">{{ movie.duration }}</p>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="text-yellow-400 hover:underline mt-4 inline-block">Explorar tráileres ›</a>
+    </section>
+
+    <!-- Sección Destacado Hoy -->
+    <section class="lg:col-span-3 mt-8">
+      <h2 class="text-2xl font-bold mb-4 text-yellow-400">Destacado hoy</h2>
+      <div class="flex overflow-x-auto space-x-4">
+        <div *ngFor="let movie of featuredMovies" class="flex-shrink-0 w-36">
+          <a [routerLink]="['/movies', movie.id]">
+            <img [src]="movie.mainImage" alt="{{ movie.title }}" class="w-full h-48 object-cover rounded-lg">
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
