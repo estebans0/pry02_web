@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { MovieListComponent } from './pages/movies/movie-list/movie-list.component';
 import { MovieDetailComponent } from './pages/movies/movie-detail/movie-detail.component';
-import { MovieFormComponent } from './pages/movies/movie-form/movie-form.component';
+import { MovieFormComponent } from './pages/movies/movie-form-admin/movie-form-admin.component';
 import { ActorListComponent } from './pages/actor/actor-list/actor-list.component';
 import { ActorDetailComponent } from './pages/actor/actor-detail/actor-detail.component';
 import { ActorFormComponent } from './pages/actor/actor-form/actor-form.component';

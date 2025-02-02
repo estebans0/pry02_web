@@ -4,7 +4,7 @@ import { Movie } from '../../components/shared/models/movie.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MovieListComponent } from "../movies/movie-list/movie-list.component";
-import { MovieFormComponent } from "../movies/movie-form/movie-form.component";
+import { MovieFormComponent } from "../movies/movie-form-admin/movie-form-admin.component";
 import { MovieDetailComponent } from "../movies/movie-detail/movie-detail.component";
 import { RouterModule } from '@angular/router';
 import { ActorDetailComponent } from "../actor/actor-detail/actor-detail.component";

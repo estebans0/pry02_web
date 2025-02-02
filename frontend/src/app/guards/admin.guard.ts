@@ -16,6 +16,7 @@ export class AdminGuard implements CanActivate {
     return this.authService.isAdmin$.pipe(
       take(1),
       map(isAdmin => {
+        console.log('AdminGuard activado. Es admin:', isAdmin); // Verifica si entra aquí
         if (isAdmin) {
           return true;
         }

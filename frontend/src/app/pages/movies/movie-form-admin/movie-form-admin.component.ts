@@ -11,7 +11,7 @@ import { MovieActor } from '../../../components/shared/models/movie-actor.model'
 
 @Component({
   selector: 'app-movie-form',
-  templateUrl: './movie-form.component.html',
+  templateUrl: './movie-form-admin.component.html',
   standalone: true,
   imports: [CommonModule, FormsModule]
 })
@@ -43,6 +43,7 @@ export class MovieFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('MovieFormComponent initialized-admin');
     this.loadActors();
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
