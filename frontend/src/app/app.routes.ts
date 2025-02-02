@@ -11,19 +11,29 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { HomePage } from './pages/home/home.pages';
 
-
 export const routes: Routes = [
-  { path: '', component: HomePage }, // ✅ Ruta principal apunta a HomePage
-  { path: 'home', component: HomePage }, // ✅ Ruta explícita para HomePage
+  { path: '', component: HomePage }, 
+  { path: 'home', component: HomePage }, 
+
+  // ✅ Usuarios autenticados pueden ver detalles
   { path: 'movies', component: MovieListComponent },
-  { path: 'movies/new', component: MovieFormComponent, canActivate: [AuthGuard, AdminGuard] },
-  { path: 'movies/:id', component: MovieDetailComponent },
-  { path: 'movies/:id/edit', component: MovieFormComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'movies/:id', component: MovieDetailComponent, canActivate: [AuthGuard] },
+  
+  // ✅ Solo Admin puede agregar/editar
+  { path: 'movies/new', component: MovieFormComponent, canActivate: [AdminGuard] },
+  { path: 'movies/:id/edit', component: MovieFormComponent, canActivate: [AdminGuard] },
+
   { path: 'actors', component: ActorListComponent },
-  { path: 'actors/new', component: ActorFormComponent, canActivate: [AuthGuard, AdminGuard] },
-  { path: 'actors/:id', component: ActorDetailComponent },
-  { path: 'actors/:id/edit', component: ActorFormComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'actors/:id', component: ActorDetailComponent, canActivate: [AuthGuard] },
+
+  // ✅ Solo Admin puede agregar/editar
+  { path: 'actors/new', component: ActorFormComponent, canActivate: [AdminGuard] },
+  { path: 'actors/:id/edit', component: ActorFormComponent, canActivate: [AdminGuard] },
+
+  // ✅ Autenticación
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '**', redirectTo: '' } // ✅ Redirigir rutas no encontradas a HomePage
+
+  // ✅ Redirigir rutas desconocidas
+  { path: '**', redirectTo: '' } 
 ];

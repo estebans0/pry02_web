@@ -15,7 +15,7 @@ import { ActorFormComponent } from "../actor/actor-form/actor-form.component";
   selector: 'app-home',
   templateUrl: './home.pages.html',
   styleUrls: ['./home.pages.scss'],
-  imports: [CommonModule, FormsModule, MovieListComponent, RouterModule, ActorDetailComponent, ActorListComponent, ActorFormComponent],
+  imports: [CommonModule, FormsModule, RouterModule, MovieListComponent],
   standalone: true,
 })
 export class HomePage implements OnInit {

@@ -3,19 +3,21 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MovieService } from '../../../services/movie.service';
 import { Movie } from '../../../components/shared/models/movie.model';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.scss'],
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormsModule], // Asegurar FormsModule para ngModel
 })
 export class MovieDetailComponent implements OnInit {
   movie!: Movie;
-  stars = new Array(5); // Para mostrar 10 estrellas
+  stars = new Array(5); // 10 estrellas
   userRating: number = 0;
-  isAdmin: boolean = false; // Supón que manejas roles en otro servicio
+  isAdmin: boolean = false;
+  isEditing: boolean = false; // Agregado para edición
 
   constructor(
     private route: ActivatedRoute,
@@ -43,7 +45,7 @@ export class MovieDetailComponent implements OnInit {
   }
 
   editMovie(): void {
-    this.router.navigate(['/movies', this.movie.id, 'edit']);
+    this.isEditing = true;
   }
 
   deleteMovie(): void {
@@ -51,6 +53,27 @@ export class MovieDetailComponent implements OnInit {
       this.movieService.deleteMovie(this.movie.id).subscribe(() => {
         this.router.navigate(['/movies']);
       });
+    }
+  }
+
+  onSubmit(): void {
+    if (this.isEditing) {
+      this.movieService.updateMovie(this.movie.id, this.movie).subscribe(() => {
+        this.isEditing = false;
+      });
+    }
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      // Convertir a base64 si es necesario
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.movie.mainImage = reader.result as string;
+      };
+      reader.readAsDataURL(file);
     }
   }
 }
