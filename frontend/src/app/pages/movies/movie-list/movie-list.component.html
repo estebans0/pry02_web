@@ -18,4 +18,21 @@
     </select>
   </div>
 
+  <!-- Listado de películas -->
+  <div *ngFor="let movie of movies" class="border p-3 mb-2">
+    <h3>{{ movie.title }}</h3>
+    <p>{{ movie.description }}</p>
+  </div>
+
+  <!-- Controles de paginación -->
+  <div class="flex items-center space-x-4">
+    <button (click)="prevPage()" [disabled]="currentPage === 1" style="cursor: pointer;">
+      Anterior
+    </button>
+    <span>Página {{currentPage}} de {{totalPages}}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages" style="cursor: pointer;">
+      Siguiente
+    </button>
+  </div>
+
 </div>

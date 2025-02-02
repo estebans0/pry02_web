@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { User } from '../../../components/shared/models/user.model'; // Asegúrate de la ruta correcta
+import { User } from '../../../components/shared/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -12,27 +12,29 @@ import { User } from '../../../components/shared/models/user.model'; // Asegúra
   imports: [CommonModule, FormsModule]
 })
 export class RegisterComponent {
-  name = '';
+  username = '';
   email = '';
   password = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(): void {
-    // Creación explícita de objeto con tipo User
     const user: User = {
-      name: this.name,
-      email: this.email,
+      username: this.username.trim(),  // Quitar espacios en blanco
+      email: this.email.trim().toLowerCase(),
       password: this.password,
-      role: 'user' // Literal 'user' | 'admin'
+      role: 'user'
     };
 
+    console.log('Registrando usuario:', user);  // Debug: Verificar qué se está enviando
+
     this.authService.register(user).subscribe({
-      next: () => {
+      next: (response) => {
+        console.log('Registro exitoso:', response); // Verificar respuesta del backend
         this.router.navigate(['/login']);
       },
       error: (err) => {
-        console.error('Error registering', err);
+        console.error('Error registering:', err);
       }
     });
   }

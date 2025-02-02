@@ -1,5 +1,6 @@
+// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../components/shared/models/user.model';
 
@@ -7,7 +8,7 @@ import { User } from '../components/shared/models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/api/auth';
+  private apiUrl = 'http://localhost:4000/api/users';
 
   // Estado del usuario (admin/user)
   private isAdminSubject = new BehaviorSubject<boolean>(false);
@@ -28,12 +29,16 @@ export class AuthService {
    * Inicia sesión y guarda token + rol en localStorage.
    */
   login(email: string, password: string): Observable<any> {
-    return this.http.post<{ token: string, role: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap((response) => {
-        if (response.token && response.role) {
+    return this.http.post<{ token: string; user: any }>(
+      `${this.apiUrl}/login`,
+      { email, password }
+    ).pipe(
+      tap(response => {
+        if (response.token && response.user?.role) {
           localStorage.setItem('token', response.token);
-          localStorage.setItem('role', response.role);
-          this.setAdminStatus(response.role === 'admin'); // Verifica si es admin
+          localStorage.setItem('role', response.user.role);
+          localStorage.setItem('username', response.user.username || '');
+          this.setAdminStatus(response.user.role === 'admin');
         }
       })
     );
@@ -45,6 +50,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+    localStorage.removeItem('username');
     this.setAdminStatus(false);
   }
 

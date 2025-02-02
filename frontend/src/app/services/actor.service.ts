@@ -1,3 +1,4 @@
+// src/app/services/actor.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,12 +8,16 @@ import { Actor } from '../components/shared/models/actor.model';
   providedIn: 'root'
 })
 export class ActorService {
-  private apiUrl = `http://localhost:4000/api/auth/actors`;
+  private apiUrl = 'http://localhost:4000/api/actors';
 
   constructor(private http: HttpClient) {}
 
-  getActors(): Observable<Actor[]> {
-    return this.http.get<Actor[]>(this.apiUrl);
+  getActors(page = 1, limit = 10, name = ''): Observable<any> {
+    let url = `${this.apiUrl}?page=${page}&limit=${limit}`;
+    if (name) {
+      url += `&name=${name}`;
+    }
+    return this.http.get<any>(url);
   }
 
   getActor(id: string): Observable<Actor> {

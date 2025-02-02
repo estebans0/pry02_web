@@ -21,6 +21,11 @@ export class MovieListComponent implements OnInit {
   genres: string[] = [];
   isAdmin = false;
 
+  // Controles de paginación
+  currentPage = 1;
+  pageSize = 5;      // Cambia según desees
+  totalPages = 1;
+
   constructor(
     private movieService: MovieService,
     private authService: AuthService
@@ -30,20 +35,40 @@ export class MovieListComponent implements OnInit {
     this.loadMovies();
     this.authService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin);
   }
-
   
-  loadMovies(): void {
-    this.movieService.getMovies().subscribe(
-      (movies: Movie[]) => {
-        this.movies = movies;
-        this.filteredMovies = movies;
-        this.extractGenres();
+  loadMovies(page: number = this.currentPage): void {
+    this.movieService.getMovies(page, this.pageSize, this.searchTerm).subscribe({
+      next: (res) => {
+        this.movies = res.movies;
+        this.currentPage = res.page;
+        this.totalPages = res.pages;
       },
-      (error) => console.error('Error fetching movies', error)
-    );
+      error: (err) => {
+        console.error('Error fetching movies', err);
+      }
+    });
+  }
+
+  // Siguiente y anterior
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.loadMovies(this.currentPage);
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadMovies(this.currentPage);
+    }
+  }
+
+  onSearch(): void {
+    this.currentPage = 1;
+    this.loadMovies(this.currentPage);
   }
   
-
   extractGenres(): void {
     this.genres = [...new Set(this.movies.map(movie => movie.genre))];
   }

@@ -1,7 +1,7 @@
 export interface User {
   id?: string;
-  name: string;
+  username: string;
   email: string;
-  password?: string;     // opcional o requerido, según tu caso
-  role: 'admin' | 'user';
+  password?: string;
+  role: 'user';
 }
