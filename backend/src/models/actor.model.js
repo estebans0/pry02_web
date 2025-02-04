@@ -12,4 +12,10 @@ const actorSchema = new Schema({
   movies:     [{ type: Schema.Types.ObjectId, ref: 'Movie' }]
 }, { timestamps: true });
 
+actorSchema.method('toJSON', function () {
+  const { __v, _id, ...object } = this.toObject();
+  object.id = _id;
+  return object;
+});
+
 module.exports = mongoose.model('Actor', actorSchema);

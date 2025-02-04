@@ -28,7 +28,7 @@ exports.createMovie = async (req, res) => {
   }
 };
 
-// Obtener lista de Películas con paginación y filtros
+// Obtener lista de Películas con paginación, filtros y ordenamiento
 exports.getMovies = async (req, res) => {
   try {
     const { 
@@ -37,7 +37,8 @@ exports.getMovies = async (req, res) => {
       title = '', 
       genre, 
       year, 
-      rating 
+      rating,
+      sort = ''  // expected values: 'title', 'releaseYear', 'rating'
     } = req.query;
 
     let query = {};
@@ -45,19 +46,32 @@ exports.getMovies = async (req, res) => {
       query.title = { $regex: title, $options: 'i' };
     }
     if (genre) {
+      // Since genre is stored as an array, use $in so that if one of the genres matches it is returned.
       query.genre = { $in: [genre] };
     }
     if (year) {
-      query.releaseYear = year;
+      query.releaseYear = Number(year);
     }
     if (rating) {
-      query.rating = rating;
+      // Return movies with rating greater than or equal to the given value.
+      query.rating = { $gte: Number(rating) };
+    }
+
+    // Prepare sort options
+    let sortOptions = {};
+    if (sort === 'title') {
+      sortOptions.title = 1;
+    } else if (sort === 'releaseYear') {
+      sortOptions.releaseYear = -1; // descending: most recent first
+    } else if (sort === 'rating') {
+      sortOptions.rating = -1;
     }
 
     const movies = await Movie.find(query)
+      .sort(sortOptions)
       .skip((page - 1) * limit)
       .limit(parseInt(limit));
-    
+
     const total = await Movie.countDocuments(query);
 
     return res.status(200).json({
@@ -85,7 +99,6 @@ exports.getMovieById = async (req, res) => {
   }
 };
 
-// Actualizar Película
 exports.updateMovie = async (req, res) => {
   try {
     const { 
@@ -96,12 +109,13 @@ exports.updateMovie = async (req, res) => {
       releaseYear, 
       rating, 
       mainImage,
-      images
+      images,
+      cast  // include the cast from the request body
     } = req.body;
 
     const movie = await Movie.findByIdAndUpdate(
       req.params.id,
-      { title, description, genre, director, releaseYear, rating, mainImage, images },
+      { title, description, genre, director, releaseYear, rating, mainImage, images, cast },
       { new: true }
     );
     if(!movie) {
@@ -156,5 +170,25 @@ exports.addActorToMovie = async (req, res) => {
     return res.status(200).json({ message: 'Actor añadido al reparto', movie });
   } catch (error) {
     return res.status(500).json({ message: 'Error al asociar actor a película', error });
+  }
+};
+
+// Obtener las películas con mejor rating (Destacado hoy)
+exports.getTopRatedMovies = async (req, res) => {
+  try {
+    const movies = await Movie.find().sort({ rating: -1 }).limit(6);
+    res.json(movies);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener películas destacadas', error });
+  }
+};
+
+// Obtener las películas más recientes (Próximamente)
+exports.getLatestMovies = async (req, res) => {
+  try {
+    const movies = await Movie.find().sort({ createdAt: -1 }).limit(3);
+    res.json(movies);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener películas próximas', error });
   }
 };

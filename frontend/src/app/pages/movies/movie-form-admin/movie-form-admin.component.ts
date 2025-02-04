@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../../services/movie.service';
 import { ActorService } from '../../../services/actor.service';
-import { Movie } from '../../../components/shared/models/movie.model';
+import { Movie, MovieCast } from '../../../components/shared/models/movie.model';
 import { Actor } from '../../../components/shared/models/actor.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MovieActor } from '../../../components/shared/models/movie-actor.model';
-
 
 @Component({
   selector: 'app-movie-form',
@@ -17,23 +15,28 @@ import { MovieActor } from '../../../components/shared/models/movie-actor.model'
 })
 export class MovieFormComponent implements OnInit {
   movie: Movie = {
+    id: '',
     title: '',
     description: '',
-    genre: '',
+    genre: [],
     director: '',
     releaseYear: 0,
     rating: 0,
+    duration: '',
+    tags: [],
     images: [],
     mainImage: '',
     cast: [],
-    id: '',
-    duration: '',
-    tags: [],
     votes: 0
   };
+  // A helper field to input genres as a comma‑separated string.
+  genreInput: string = '';
   actors: Actor[] = [];
-  selectedActors: string[] = [];
   isEditing = false;
+
+  // For dynamically adding cast members:
+  newCastActorId: string = '';
+  newCharacterName: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -43,7 +46,6 @@ export class MovieFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('MovieFormComponent initialized-admin');
     this.loadActors();
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -54,7 +56,7 @@ export class MovieFormComponent implements OnInit {
 
   loadActors(): void {
     this.actorService.getActors().subscribe(
-      (actors) => this.actors = actors,
+      (res) => this.actors = res.actors || res,
       (error) => console.error('Error fetching actors', error)
     );
   }
@@ -63,7 +65,8 @@ export class MovieFormComponent implements OnInit {
     this.movieService.getMovieById(id).subscribe(
       (movie) => {
         this.movie = movie;
-        this.selectedActors = movie.cast.map(actor => actor.id).filter((id): id is string => id !== undefined);
+        // If the genre field is an array, join it to a comma‐separated string for display.
+        this.genreInput = movie.genre.join(', ');
       },
       (error) => console.error('Error fetching movie', error)
     );
@@ -80,16 +83,51 @@ export class MovieFormComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    // Convertir Actor[] a MovieActor[]
-    this.movie.cast = this.selectedActors.map(actorId => {
-      const actor = this.actors.find(a => a.id === actorId);
-      return {
-        id: actor?.id ?? '',  // Asegurar que el ID no sea undefined
-        name: actor?.name ?? ''
+  onMultipleFilesSelected(event: any): void {
+    const files: FileList = event.target.files;
+    const images: string[] = [];
+    let loaded = 0;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        images.push(e.target.result);
+        loaded++;
+        if (loaded === files.length) {
+          this.movie.images = images;
+        }
       };
-    }) as MovieActor[];
-  
+      reader.readAsDataURL(file);
+    }
+  }
+
+  addCastMember(): void {
+    if (this.newCastActorId && this.newCharacterName) {
+      const actor = this.actors.find(a => a.id === this.newCastActorId);
+      if (actor) {
+        const newCast: MovieCast = {
+          actor: {
+            id: actor.id!,
+            name: actor.name,
+            mainImage: actor.mainImage || ''
+          },
+          characterName: this.newCharacterName
+        };
+        this.movie.cast.push(newCast);
+        this.newCastActorId = '';
+        this.newCharacterName = '';
+      }
+    }
+  }
+
+  removeCastMember(index: number): void {
+    this.movie.cast.splice(index, 1);
+  }
+
+  onSubmit(): void {
+    // Process the genre input into an array (trim spaces and split by comma)
+    this.movie.genre = this.genreInput.split(',').map(g => g.trim()).filter(g => g);
+
     if (this.isEditing) {
       this.movieService.updateMovie(this.movie.id, this.movie).subscribe(
         () => this.router.navigate(['/movies', this.movie.id]),

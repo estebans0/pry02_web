@@ -10,8 +10,8 @@
       <textarea id="description" name="description" [(ngModel)]="movie.description" required class="w-full p-2 border rounded text-black"></textarea>
     </div>
     <div class="mb-4">
-      <label for="genre" class="block mb-2">Género:</label>
-      <input type="text" id="genre" name="genre" [(ngModel)]="movie.genre" required class="w-full p-2 border rounded text-black">
+      <label for="genre" class="block mb-2">Género (separar con comas):</label>
+      <input type="text" id="genre" name="genre" [(ngModel)]="genreInput" required class="w-full p-2 border rounded text-black">
     </div>
     <div class="mb-4">
       <label for="director" class="block mb-2">Director:</label>
@@ -30,10 +30,24 @@
       <input type="file" id="mainImage" (change)="onFileSelected($event)" accept="image/*" class="w-full p-2 border rounded text-black">
     </div>
     <div class="mb-4">
-      <label for="cast" class="block mb-2">Reparto:</label>
-      <select multiple id="cast" name="cast" [(ngModel)]="selectedActors" class="w-full p-2 border rounded text-black">
-        <option *ngFor="let actor of actors" [value]="actor.id">{{actor.name}}</option>
-      </select>
+      <label for="images" class="block mb-2">Imágenes adicionales:</label>
+      <input type="file" id="images" (change)="onMultipleFilesSelected($event)" accept="image/*" multiple class="w-full p-2 border rounded text-black">
+    </div>
+    <!-- Reparto (Cast) Section -->
+    <div class="mb-4">
+      <h3 class="text-xl font-semibold mb-2">Reparto:</h3>
+      <div *ngFor="let castMember of movie.cast; let i = index" class="flex items-center mb-2">
+        <span>{{ castMember.actor.name }} as {{ castMember.characterName }}</span>
+        <button type="button" (click)="removeCastMember(i)" class="ml-2 text-red-500">Eliminar</button>
+      </div>
+      <div class="flex items-center space-x-2">
+        <select [(ngModel)]="newCastActorId" name="newCastActor" class="p-2 border rounded text-black">
+          <option value="" disabled selected>Selecciona actor</option>
+          <option *ngFor="let actor of actors" [value]="actor.id">{{ actor.name }}</option>
+        </select>
+        <input type="text" [(ngModel)]="newCharacterName" name="newCharacterName" placeholder="Nombre del personaje" class="p-2 border rounded text-black">
+        <button type="button" (click)="addCastMember()" class="bg-blue-500 text-white px-2 py-1 rounded">Agregar</button>
+      </div>
     </div>
     <button type="submit" [disabled]="!movieForm.form.valid" class="bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-500">
       {{isEditing ? 'Actualizar' : 'Agregar'}} Película

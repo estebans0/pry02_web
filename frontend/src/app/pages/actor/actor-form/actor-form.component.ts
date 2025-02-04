@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ActorFormComponent implements OnInit {
   actor: Actor = {
-    id: '',              // Asegúrate de definir 'id' en tu Actor model si lo usas
+    id: '',
     name: '',
     birthDate: new Date(),
     biography: '',
@@ -50,6 +50,24 @@ export class ActorFormComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.actor.mainImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onMultipleFilesSelected(event: any): void {
+    const files: FileList = event.target.files;
+    const images: string[] = [];
+    let loaded = 0;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        images.push(e.target.result);
+        loaded++;
+        if (loaded === files.length) {
+          this.actor.images = images;
+        }
       };
       reader.readAsDataURL(file);
     }

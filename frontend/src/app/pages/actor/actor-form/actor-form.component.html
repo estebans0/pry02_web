@@ -3,19 +3,23 @@
   <form (ngSubmit)="onSubmit()" #actorForm="ngForm" class="max-w-lg">
     <div class="mb-4">
       <label for="name" class="block mb-2">Nombre:</label>
-      <input type="text" id="name" name="name" [(ngModel)]="actor.name" required class="w-full p-2 border rounded">
+      <input type="text" id="name" name="name" [(ngModel)]="actor.name" required class="w-full p-2 border rounded text-black">
     </div>
     <div class="mb-4">
       <label for="birthDate" class="block mb-2">Fecha de nacimiento:</label>
-      <input type="date" id="birthDate" name="birthDate" [(ngModel)]="actor.birthDate" required class="w-full p-2 border rounded">
+      <input type="date" id="birthDate" name="birthDate" [(ngModel)]="actor.birthDate" required class="w-full p-2 border rounded text-black">
     </div>
     <div class="mb-4">
       <label for="biography" class="block mb-2">Biografía:</label>
-      <textarea id="biography" name="biography" [(ngModel)]="actor.biography" required class="w-full p-2 border rounded"></textarea>
+      <textarea id="biography" name="biography" [(ngModel)]="actor.biography" required class="w-full p-2 border rounded text-black"></textarea>
     </div>
     <div class="mb-4">
       <label for="mainImage" class="block mb-2">Imagen principal:</label>
-      <input type="file" id="mainImage" (change)="onFileSelected($event)" accept="image/*" class="w-full p-2 border rounded">
+      <input type="file" id="mainImage" (change)="onFileSelected($event)" accept="image/*" class="w-full p-2 border rounded text-black">
+    </div>
+    <div class="mb-4">
+      <label for="images" class="block mb-2">Imágenes adicionales:</label>
+      <input type="file" id="images" (change)="onMultipleFilesSelected($event)" accept="image/*" multiple class="w-full p-2 border rounded text-black">
     </div>
     <button type="submit" [disabled]="!actorForm.form.valid" class="bg-blue-500 text-white p-2 rounded">
       {{isEditing ? 'Actualizar' : 'Agregar'}} Actor

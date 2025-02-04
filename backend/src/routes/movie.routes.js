@@ -1,11 +1,10 @@
-// src/routes/movie.routes.js
 const express = require('express');
 const router = express.Router();
 const movieController = require('../controllers/movie.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 const roleMiddleware = require('../middlewares/role.middleware');
 
-// Rutas
+// Rutas de películas
 router.post('/', 
   authMiddleware, 
   roleMiddleware(['admin']), 
@@ -33,5 +32,11 @@ router.post('/:id/add-actor',
   roleMiddleware(['admin']),
   movieController.addActorToMovie
 );
+
+// Obtener las películas con mejor rating (Destacado hoy)
+router.get('/top-rated', movieController.getTopRatedMovies);
+
+// Obtener las películas más recientes (Próximamente)
+router.get('/latest', movieController.getLatestMovies);
 
 module.exports = router;

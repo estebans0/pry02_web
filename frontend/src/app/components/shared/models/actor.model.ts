@@ -1,5 +1,3 @@
-import { Movie } from './movie.model';
-
 export interface Actor {
   id?: string;
   name: string;
@@ -7,5 +5,5 @@ export interface Actor {
   biography: string;
   images: string[];
   mainImage: string;
-  movies: Movie[];
+  movies: any[]; // or a more detailed Movie interface if desired
 }

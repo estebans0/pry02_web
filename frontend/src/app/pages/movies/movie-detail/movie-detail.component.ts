@@ -4,29 +4,30 @@ import { MovieService } from '../../../services/movie.service';
 import { Movie } from '../../../components/shared/models/movie.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.scss'],
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule], // Asegurar FormsModule para ngModel
+  imports: [CommonModule, RouterLink, FormsModule]
 })
 export class MovieDetailComponent implements OnInit {
   movie!: Movie;
-  stars = new Array(5); // 10 estrellas
+  stars = new Array(5);
   userRating: number = 0;
   isAdmin: boolean = false;
-  isEditing: boolean = false; // Agregado para edición
+  isEditing: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    console.log('Cargando MovieDetailComponent');
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.movieService.getMovieById(id).subscribe((movie) => {
@@ -35,6 +36,7 @@ export class MovieDetailComponent implements OnInit {
         }
       });
     }
+    this.authService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin);
   }
 
   rateMovie(rating: number): void {
@@ -69,7 +71,6 @@ export class MovieDetailComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
-      // Convertir a base64 si es necesario
       const reader = new FileReader();
       reader.onload = () => {
         this.movie.mainImage = reader.result as string;

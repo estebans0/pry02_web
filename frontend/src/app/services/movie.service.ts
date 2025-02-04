@@ -39,11 +39,21 @@ export class MovieService {
    * Ejemplo de uso de query params:
    * GET /api/movies?page=1&limit=10&title=batman
    */
-  getMovies(page = 1, limit = 10, title = ''): Observable<any> {
+  getMovies(
+    page = 1, 
+    limit = 10, 
+    title = '', 
+    sort = '', 
+    genre = '', 
+    year = '', 
+    rating = ''
+  ): Observable<any> {
     let url = `${this.apiUrl}?page=${page}&limit=${limit}`;
-    if (title) {
-      url += `&title=${title}`;
-    }
+    if (title) url += `&title=${title}`;
+    if (sort) url += `&sort=${sort}`;
+    if (genre) url += `&genre=${genre}`;
+    if (year) url += `&year=${year}`;
+    if (rating) url += `&rating=${rating}`;
     return this.http.get<any>(url);
   }
 

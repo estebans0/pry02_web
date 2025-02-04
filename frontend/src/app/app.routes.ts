@@ -12,28 +12,17 @@ import { AdminGuard } from './guards/admin.guard';
 import { HomePage } from './pages/home/home.pages';
 
 export const routes: Routes = [
-  { path: '', component: HomePage }, 
-  { path: 'home', component: HomePage }, 
-
-  // ✅ Usuarios autenticados pueden ver detalles
+  { path: '', component: HomePage },
+  { path: 'home', component: HomePage },
   { path: 'movies', component: MovieListComponent },
   { path: 'movies/:id', component: MovieDetailComponent, canActivate: [AuthGuard] },
-  
-  // ✅ Solo Admin puede agregar/editar
   { path: 'movies/new', component: MovieFormComponent, canActivate: [AdminGuard] },
   { path: 'movies/:id/edit', component: MovieFormComponent, canActivate: [AdminGuard] },
-
   { path: 'actors', component: ActorListComponent },
   { path: 'actors/:id', component: ActorDetailComponent, canActivate: [AuthGuard] },
-
-  // ✅ Solo Admin puede agregar/editar
   { path: 'actors/new', component: ActorFormComponent, canActivate: [AdminGuard] },
   { path: 'actors/:id/edit', component: ActorFormComponent, canActivate: [AdminGuard] },
-
-  // ✅ Autenticación
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-
-  // ✅ Redirigir rutas desconocidas
-  { path: '**', redirectTo: '' } 
+  { path: '**', redirectTo: '' }
 ];

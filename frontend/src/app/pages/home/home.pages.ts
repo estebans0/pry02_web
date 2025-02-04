@@ -4,12 +4,7 @@ import { Movie } from '../../components/shared/models/movie.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MovieListComponent } from "../movies/movie-list/movie-list.component";
-import { MovieFormComponent } from "../movies/movie-form-admin/movie-form-admin.component";
-import { MovieDetailComponent } from "../movies/movie-detail/movie-detail.component";
 import { RouterModule } from '@angular/router';
-import { ActorDetailComponent } from "../actor/actor-detail/actor-detail.component";
-import { ActorListComponent } from "../actor/actor-list/actor-list.component";
-import { ActorFormComponent } from "../actor/actor-form/actor-form.component";
 
 @Component({
   selector: 'app-home',
@@ -25,7 +20,7 @@ export class HomePage implements OnInit {
       mainImage: 'https://i.postimg.cc/7ZJXx0pc/Oppenheimer-Christopher-Nolan-0-1-width-1024-Kh9-HV7-C.jpg',
       id: '1',
       description: 'La historia de J. Robert Oppenheimer, el físico detrás de la bomba atómica.',
-      genre: 'Drama',
+      genre: ['Drama'],   // ← Now an array
       director: 'Christopher Nolan',
       releaseYear: 2023,
       rating: 8.9,
@@ -38,9 +33,9 @@ export class HomePage implements OnInit {
     {
       title: 'Oppenheimer',
       mainImage: 'https://i.postimg.cc/7ZJXx0pc/Oppenheimer-Christopher-Nolan-0-1-width-1024-Kh9-HV7-C.jpg',
-      id: '1',
+      id: '2',
       description: 'La historia de J. Robert Oppenheimer, el físico detrás de la bomba atómica.',
-      genre: 'Drama',
+      genre: ['Drama'],
       director: 'Christopher Nolan',
       releaseYear: 2023,
       rating: 8.9,
@@ -50,57 +45,28 @@ export class HomePage implements OnInit {
       tags: [],
       votes: 0
     },
-    {
-      title: 'Oppenheimer',
-      mainImage: 'https://i.postimg.cc/7ZJXx0pc/Oppenheimer-Christopher-Nolan-0-1-width-1024-Kh9-HV7-C.jpg',
-      id: '1',
-      description: 'La historia de J. Robert Oppenheimer, el físico detrás de la bomba atómica.',
-      genre: 'Drama',
-      director: 'Christopher Nolan',
-      releaseYear: 2023,
-      rating: 8.9,
-      images: [],
-      cast: [],
-      duration: '3:00',
-      tags: [],
-      votes: 0
-    },
-    {
-      title: 'Oppenheimer',
-      mainImage: 'https://i.postimg.cc/7ZJXx0pc/Oppenheimer-Christopher-Nolan-0-1-width-1024-Kh9-HV7-C.jpg',
-      id: '1',
-      description: 'La historia de J. Robert Oppenheimer, el físico detrás de la bomba atómica.',
-      genre: 'Drama',
-      director: 'Christopher Nolan',
-      releaseYear: 2023,
-      rating: 8.9,
-      images: [],
-      cast: [],
-      duration: '3:00',
-      tags: [],
-      votes: 0
-    },
+    // Add additional movies similarly...
     {
       title: 'Dune: Parte 2',
       mainImage: 'https://i.postimg.cc/PqzWx4K6/Dune-Part-2.jpg',
-      id: '1',
+      id: '3',
       description: 'Paul Atreides continúa su camino en el desierto de Arrakis.',
-      genre: 'Ciencia Ficción',
+      genre: ['Ciencia Ficción'],  // changed to array
       director: 'Denis Villeneuve',
       releaseYear: 2024,
       rating: 9.0,
       images: [],
+      cast: [],
       duration: '2:45',
       tags: [],
-      cast: [],
       votes: 0
     },
     {
       title: 'The Batman',
       mainImage: 'https://i.postimg.cc/mZ6QthNG/Batman-Courtesy-of-DC-Comics.jpg',
-      id: '1',
+      id: '4',
       description: 'Bruce Wayne enfrenta un nuevo desafío en Gotham City.',
-      genre: 'Acción',
+      genre: ['Acción'],  // changed to array
       director: 'Matt Reeves',
       releaseYear: 2022,
       rating: 8.3,
@@ -117,9 +83,9 @@ export class HomePage implements OnInit {
       title: 'Joker 2',
       duration: '2:35',
       mainImage: 'https://i.postimg.cc/mZ6QthNG/Batman-Courtesy-of-DC-Comics.jpg',
-      id: '1',
+      id: '5',
       description: '',
-      genre: '',
+      genre: [],   // empty array if no genre data
       director: '',
       cast: [],
       tags: [],
@@ -132,9 +98,9 @@ export class HomePage implements OnInit {
       title: 'Avatar 3',
       duration: '3:00',
       mainImage: 'https://i.postimg.cc/mZ6QthNG/Batman-Courtesy-of-DC-Comics.jpg',
-      id: '1',
+      id: '6',
       description: '',
-      genre: '',
+      genre: [],
       director: '',
       releaseYear: 2025,
       rating: 0,
@@ -147,9 +113,9 @@ export class HomePage implements OnInit {
       title: 'Deadpool 3',
       duration: '2:15',
       mainImage: 'https://i.postimg.cc/mZ6QthNG/Batman-Courtesy-of-DC-Comics.jpg',
-      id: '1',
+      id: '7',
       description: '',
-      genre: '',
+      genre: [],
       director: '',
       releaseYear: 2024,
       rating: 0,
@@ -157,8 +123,7 @@ export class HomePage implements OnInit {
       cast: [],
       tags: [],
       votes: 0
-    },
-
+    }
   ];
 
   featuredMovieIndex = 0;

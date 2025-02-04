@@ -4,26 +4,26 @@ import { MovieService } from '../../../services/movie.service';
 import { AuthService } from '../../../services/auth.service';
 import { Movie } from '../../../components/shared/models/movie.model';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, RouterModule]
 })
 export class MovieListComponent implements OnInit {
   movies: Movie[] = [];
-  filteredMovies: Movie[] = [];
+  // Filtering parameters
   searchTerm = '';
   selectedGenre = '';
-  sortBy = 'title';
-  genres: string[] = [];
-  isAdmin = false;
+  selectedYear: number | null = null;
+  selectedRating: number | null = null;
+  sortBy = '';
 
-  // Controles de paginación
+  isAdmin = false;
   currentPage = 1;
-  pageSize = 5;      // Cambia según desees
+  pageSize = 5;
   totalPages = 1;
 
   constructor(
@@ -37,7 +37,15 @@ export class MovieListComponent implements OnInit {
   }
   
   loadMovies(page: number = this.currentPage): void {
-    this.movieService.getMovies(page, this.pageSize, this.searchTerm).subscribe({
+    this.movieService.getMovies(
+      page,
+      this.pageSize,
+      this.searchTerm,
+      this.sortBy,
+      this.selectedGenre,
+      this.selectedYear ? this.selectedYear.toString() : '',
+      this.selectedRating ? this.selectedRating.toString() : ''
+    ).subscribe({
       next: (res) => {
         this.movies = res.movies;
         this.currentPage = res.page;
@@ -49,7 +57,11 @@ export class MovieListComponent implements OnInit {
     });
   }
 
-  // Siguiente y anterior
+  onSearch(): void {
+    this.currentPage = 1;
+    this.loadMovies(this.currentPage);
+  }
+
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -63,43 +75,4 @@ export class MovieListComponent implements OnInit {
       this.loadMovies(this.currentPage);
     }
   }
-
-  onSearch(): void {
-    this.currentPage = 1;
-    this.loadMovies(this.currentPage);
-  }
-  
-  extractGenres(): void {
-    this.genres = [...new Set(this.movies.map(movie => movie.genre))];
-  }
-
-  search(): void {
-    this.applyFilters();
-  }
-
-  filter(): void {
-    this.applyFilters();
-  }
-
-  sort(): void {
-    this.applyFilters();
-  }
-
-  private applyFilters(): void {
-    this.filteredMovies = this.movies
-      .filter(movie => 
-        movie.title.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-        (this.selectedGenre ? movie.genre === this.selectedGenre : true)
-      )
-      .sort((a, b) => {
-        if (this.sortBy === 'title') return a.title.localeCompare(b.title);
-        if (this.sortBy === 'releaseYear') return b.releaseYear - a.releaseYear;
-        if (this.sortBy === 'rating') return b.rating - a.rating;
-        return 0;
-      });
-  }
-}
-
-function of(movies: Movie[]): Observable<Movie[]> {
-  throw new Error('Function not implemented.');
 }
