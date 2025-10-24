@@ -1,4 +1,0 @@
-:{$PORT}
-
-root * dist/frontend/browser
-file_server
