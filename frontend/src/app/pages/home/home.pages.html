@@ -1,64 +1,70 @@
 <app-movie-list></app-movie-list>
 
-<div class="bg-black text-white min-h-screen p-6 flex justify-center">
-  
-  <!-- Contenedor principal con dos columnas -->
-  <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
-    
-    <!-- Sección del Carrusel (Ocupa 2 columnas en pantallas grandes) -->
-    <section class="lg:col-span-2 relative">
+<div class="home-wrapper min-h-screen flex justify-center px-4 py-10 transition-all duration-300">
+
+  <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+    <!-- 🎞️ Carrusel principal -->
+    <section class="lg:col-span-2 relative rounded-2xl overflow-hidden shadow-lg">
       <div class="relative">
-        
-        <!-- Imagen del Carrusel con Enlace -->
+
         <a [routerLink]="['/movies', featuredMovie.id]">
-          <img [src]="featuredMovie.mainImage" alt="Destacado" class="w-full h-[500px] object-cover rounded-lg shadow-lg">
+          <img [src]="featuredMovie.mainImage" alt="Destacado"
+               class="w-full h-[520px] object-cover rounded-2xl">
         </a>
 
-        <!-- Contenido del Carrusel -->
-        <div class="absolute bottom-8 left-8 bg-black bg-opacity-70 p-6 rounded-lg">
-          <h2 class="text-4xl font-bold text-yellow-400">{{ featuredMovie.title }}</h2>
-          <p class="text-gray-300">{{ featuredMovie.description }}</p>
-          <a [routerLink]="['/movies', featuredMovie.id]" class="mt-4 bg-yellow-500 text-black px-6 py-3 rounded-lg font-bold hover:bg-yellow-600">
+        <!-- Overlay del contenido -->
+        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[var(--bg-primary)]/95 via-[var(--bg-secondary)]/90 to-transparent p-8 rounded-b-2xl">
+          <h2 class="text-4xl font-bold text-[var(--accent)] mb-2">{{ featuredMovie.title }}</h2>
+          <p class="text-[var(--text-secondary)] max-w-2xl mb-4">{{ featuredMovie.description }}</p>
+          <a [routerLink]="['/movies', featuredMovie.id]"
+             class="inline-block bg-[var(--accent)] text-[var(--bg-primary)] px-6 py-3 rounded-lg font-semibold hover:opacity-85 transition">
             ▶ Ver Detalles
           </a>
         </div>
 
-        <!-- Botón Anterior -->
-        <button (click)="prevMovie()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 text-white p-2 rounded-full">
+        <!-- Botones de navegación -->
+        <button (click)="prevMovie()" 
+                class="nav-btn left-6">
           ❮
         </button>
-
-        <!-- Botón Siguiente -->
-        <button (click)="nextMovie()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 text-white p-2 rounded-full">
+        <button (click)="nextMovie()" 
+                class="nav-btn right-6">
           ❯
         </button>
       </div>
     </section>
 
-    <!-- Sección Próximamente (Ocupa 1 columna) -->
-    <section class="lg:col-span-1 bg-gray-900 p-4 rounded-lg shadow-lg">
-      <h2 class="text-2xl font-bold mb-4 text-yellow-400">Próximamente</h2>
+    <!-- 🎬 Próximamente -->
+    <section class="sidebar bg-[var(--bg-secondary)] p-6 rounded-2xl shadow-lg border border-[var(--border-color)]">
+      <h2 class="text-2xl font-bold mb-5 text-[var(--accent)]">Próximamente</h2>
       <div class="space-y-4">
-        <div *ngFor="let movie of upcomingMovies" class="flex items-center bg-gray-800 rounded-lg overflow-hidden">
+        <div *ngFor="let movie of upcomingMovies" 
+             class="flex items-center bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl overflow-hidden shadow-sm hover:scale-[1.02] transition-transform duration-200">
           <a [routerLink]="['/movies', movie.id]">
             <img [src]="movie.mainImage" alt="{{ movie.title }}" class="w-24 h-24 object-cover">
           </a>
-          <div class="p-4">
-            <h3 class="text-white font-semibold">{{ movie.title }}</h3>
-            <p class="text-gray-400 text-sm">{{ movie.duration }}</p>
+          <div class="p-3">
+            <h3 class="font-semibold text-[var(--text-primary)] leading-tight">{{ movie.title }}</h3>
+            <p class="text-[var(--text-secondary)] text-sm">{{ movie.duration }}</p>
           </div>
         </div>
       </div>
-      <a href="#" class="text-yellow-400 hover:underline mt-4 inline-block">Explorar tráileres ›</a>
+      <a href="#" class="text-[var(--accent)] hover:underline mt-6 inline-block font-medium">Explorar tráileres ›</a>
     </section>
 
-    <!-- Sección Destacado Hoy -->
-    <section class="lg:col-span-3 mt-8">
-      <h2 class="text-2xl font-bold mb-4 text-yellow-400">Destacado hoy</h2>
-      <div class="flex overflow-x-auto space-x-4">
-        <div *ngFor="let movie of featuredMovies" class="flex-shrink-0 w-36">
+    <!-- ⭐ Destacado hoy -->
+    <section class="lg:col-span-3 mt-12">
+      <h2 class="text-2xl font-bold mb-6 text-[var(--accent)]">Destacado hoy</h2>
+      <div class="flex overflow-x-auto space-x-6 pb-3">
+        <div *ngFor="let movie of featuredMovies" 
+             class="flex-shrink-0 w-40 rounded-xl overflow-hidden shadow-md border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:shadow-lg transition">
           <a [routerLink]="['/movies', movie.id]">
-            <img [src]="movie.mainImage" alt="{{ movie.title }}" class="w-full h-48 object-cover rounded-lg">
+            <img [src]="movie.mainImage" alt="{{ movie.title }}"
+                 class="w-full h-56 object-cover rounded-t-xl">
+            <div class="p-3">
+              <h4 class="font-semibold text-[var(--text-primary)] text-sm">{{ movie.title }}</h4>
+            </div>
           </a>
         </div>
       </div>

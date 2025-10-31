@@ -1,0 +1,38 @@
+.home-wrapper {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-btn {
+  @apply absolute top-1/2 transform -translate-y-1/2 p-3 rounded-full shadow-md;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+section {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar {
+  max-height: 100%;
+}
+
+img {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.03);
+}
+
+a {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}

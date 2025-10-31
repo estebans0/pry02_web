@@ -1,55 +1,54 @@
 <div class="container mx-auto p-4">
-  <h2 class="text-2xl font-bold mb-4">{{isEditing ? 'Editar' : 'Agregar'}} Película</h2>
+  <h2 class="text-2xl font-bold mb-4 text-[var(--accent)]">{{isEditing ? 'Editar' : 'Agregar'}} Película</h2>
   <form (ngSubmit)="onSubmit()" #movieForm="ngForm" class="max-w-lg">
     <div class="mb-4">
       <label for="title" class="block mb-2">Título:</label>
-      <input type="text" id="title" name="title" [(ngModel)]="movie.title" required class="w-full p-2 border rounded text-black">
+      <input type="text" id="title" name="title" [(ngModel)]="movie.title" required class="w-full p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
     </div>
     <div class="mb-4">
       <label for="description" class="block mb-2">Descripción:</label>
-      <textarea id="description" name="description" [(ngModel)]="movie.description" required class="w-full p-2 border rounded text-black"></textarea>
+      <textarea id="description" name="description" [(ngModel)]="movie.description" required class="w-full p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]"></textarea>
     </div>
     <div class="mb-4">
       <label for="genre" class="block mb-2">Género (separar con comas):</label>
-      <input type="text" id="genre" name="genre" [(ngModel)]="genreInput" required class="w-full p-2 border rounded text-black">
+      <input type="text" id="genre" name="genre" [(ngModel)]="genreInput" required class="w-full p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
     </div>
     <div class="mb-4">
       <label for="director" class="block mb-2">Director:</label>
-      <input type="text" id="director" name="director" [(ngModel)]="movie.director" required class="w-full p-2 border rounded text-black">
+      <input type="text" id="director" name="director" [(ngModel)]="movie.director" required class="w-full p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
     </div>
     <div class="mb-4">
       <label for="releaseYear" class="block mb-2">Año de lanzamiento:</label>
-      <input type="number" id="releaseYear" name="releaseYear" [(ngModel)]="movie.releaseYear" required class="w-full p-2 border rounded text-black">
+      <input type="number" id="releaseYear" name="releaseYear" [(ngModel)]="movie.releaseYear" required class="w-full p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
     </div>
     <div class="mb-4">
       <label for="rating" class="block mb-2">Calificación:</label>
-      <input type="number" id="rating" name="rating" [(ngModel)]="movie.rating" required min="0" max="10" step="0.1" class="w-full p-2 border rounded text-black">
+      <input type="number" id="rating" name="rating" [(ngModel)]="movie.rating" required min="0" max="10" step="0.1" class="w-full p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
     </div>
     <div class="mb-4">
       <label for="mainImage" class="block mb-2">Imagen principal:</label>
-      <input type="file" id="mainImage" (change)="onFileSelected($event)" accept="image/*" class="w-full p-2 border rounded text-black">
+      <input type="file" id="mainImage" (change)="onFileSelected($event)" accept="image/*" class="w-full p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
     </div>
     <div class="mb-4">
       <label for="images" class="block mb-2">Imágenes adicionales:</label>
-      <input type="file" id="images" (change)="onMultipleFilesSelected($event)" accept="image/*" multiple class="w-full p-2 border rounded text-black">
+      <input type="file" id="images" (change)="onMultipleFilesSelected($event)" accept="image/*" multiple class="w-full p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
     </div>
-    <!-- Reparto (Cast) Section -->
     <div class="mb-4">
       <h3 class="text-xl font-semibold mb-2">Reparto:</h3>
-      <div *ngFor="let castMember of movie.cast; let i = index" class="flex items-center mb-2">
+      <div *ngFor="let castMember of movie.cast; let i = index" class="flex items-center mb-2 text-[var(--text-primary)]">
         <span>{{ castMember.actor.name }} as {{ castMember.characterName }}</span>
-        <button type="button" (click)="removeCastMember(i)" class="ml-2 text-red-500">Eliminar</button>
+        <button type="button" (click)="removeCastMember(i)" class="ml-2 text-[var(--accent)] hover:underline">Eliminar</button>
       </div>
       <div class="flex items-center space-x-2">
-        <select [(ngModel)]="newCastActorId" name="newCastActor" class="p-2 border rounded text-black">
+        <select [(ngModel)]="newCastActorId" name="newCastActor" class="p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
           <option value="" disabled selected>Selecciona actor</option>
           <option *ngFor="let actor of actors" [value]="actor.id">{{ actor.name }}</option>
         </select>
-        <input type="text" [(ngModel)]="newCharacterName" name="newCharacterName" placeholder="Nombre del personaje" class="p-2 border rounded text-black">
-        <button type="button" (click)="addCastMember()" class="bg-blue-500 text-white px-2 py-1 rounded">Agregar</button>
+        <input type="text" [(ngModel)]="newCharacterName" name="newCharacterName" placeholder="Nombre del personaje" class="p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
+        <button type="button" (click)="addCastMember()" class="bg-[var(--accent)] text-[var(--bg-primary)] px-2 py-1 rounded hover:opacity-80">Agregar</button>
       </div>
     </div>
-    <button type="submit" [disabled]="!movieForm.form.valid" class="bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-500">
+    <button type="submit" [disabled]="!movieForm.form.valid" class="bg-[var(--accent)] text-[var(--bg-primary)] px-4 py-2 rounded hover:opacity-80">
       {{isEditing ? 'Actualizar' : 'Agregar'}} Película
     </button>
   </form>

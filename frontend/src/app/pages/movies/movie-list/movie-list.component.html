@@ -1,5 +1,5 @@
 <div class="container mx-auto py-6">
-  <h2 class="text-4xl font-bold mb-6 text-yellow-400">Películas</h2>
+  <h2 class="text-4xl font-bold mb-6 text-[var(--accent)]">Películas</h2>
 
   <!-- Barra de búsqueda, filtros y ordenamiento -->
   <div class="flex flex-col md:flex-row md:space-x-4 mb-6">
@@ -8,9 +8,9 @@
       placeholder="Buscar películas..."
       [(ngModel)]="searchTerm"
       (input)="onSearch()"
-      class="w-full p-3 border rounded bg-gray-800 text-white placeholder-gray-400 mb-2 md:mb-0"
+      class="w-full p-3 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] border-[var(--border-color)] mb-2 md:mb-0"
     >
-    <select [(ngModel)]="selectedGenre" (change)="onSearch()" class="p-3 border rounded bg-gray-800 text-white">
+    <select [(ngModel)]="selectedGenre" (change)="onSearch()" class="p-3 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
       <option value="">Todos los géneros</option>
       <option value="Acción">Acción</option>
       <option value="Drama">Drama</option>
@@ -21,7 +21,7 @@
       placeholder="Año de lanzamiento"
       [(ngModel)]="selectedYear"
       (input)="onSearch()"
-      class="p-3 border rounded bg-gray-800 text-white"
+      class="p-3 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]"
     >
     <input
       type="number"
@@ -31,9 +31,9 @@
       step="0.1"
       [(ngModel)]="selectedRating"
       (input)="onSearch()"
-      class="p-3 border rounded bg-gray-800 text-white"
+      class="p-3 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]"
     >
-    <select [(ngModel)]="sortBy" (change)="onSearch()" class="p-3 border rounded bg-gray-800 text-white">
+    <select [(ngModel)]="sortBy" (change)="onSearch()" class="p-3 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
       <option value="">Ordenar por...</option>
       <option value="title">Título (A-Z)</option>
       <option value="releaseYear">Más recientes</option>
@@ -42,22 +42,22 @@
   </div>
 
   <!-- Listado de películas -->
-  <div *ngFor="let movie of movies" class="border p-3 mb-2">
+  <div *ngFor="let movie of movies" class="card border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] p-3 mb-2 rounded">
     <h3 class="text-xl font-bold">{{ movie.title }}</h3>
-    <p>{{ movie.description }}</p>
-    <p class="text-sm text-gray-400">Año: {{ movie.releaseYear }} · Calificación: {{ movie.rating }}/10</p>
-    <a [routerLink]="['/movies', movie.id]" class="text-blue-500 hover:underline">Ver detalles</a>
+    <p class="text-[var(--text-secondary)]">{{ movie.description }}</p>
+    <p class="text-sm text-[var(--text-secondary)]">Año: {{ movie.releaseYear }} · Calificación: {{ movie.rating }}/10</p>
+    <a [routerLink]="['/movies', movie.id]" class="text-[var(--accent)] hover:underline">Ver detalles</a>
   </div>
 
-  <!-- Controles de paginación (solo si no se están aplicando filters via backend) -->
-  <div class="flex items-center space-x-4 mt-4">
-    <button (click)="prevPage()" [disabled]="currentPage === 1" style="cursor: pointer;">Anterior</button>
+  <!-- Controles de paginación -->
+  <div class="flex items-center space-x-4 mt-4 text-[var(--text-primary)]">
+    <button (click)="prevPage()" [disabled]="currentPage === 1" class="px-4 py-2 rounded border border-[var(--border-color)]">Anterior</button>
     <span>Página {{currentPage}} de {{totalPages}}</span>
-    <button (click)="nextPage()" [disabled]="currentPage === totalPages" style="cursor: pointer;">Siguiente</button>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="px-4 py-2 rounded border border-[var(--border-color)]">Siguiente</button>
   </div>
 
   <!-- Botón para agregar nueva película (solo para Admin) -->
   <div *ngIf="isAdmin" class="mt-4">
-    <a routerLink="/movies/new" class="bg-green-500 text-white px-4 py-2 rounded">Agregar Nueva Película</a>
+    <a routerLink="/movies/new" class="bg-[var(--accent)] text-[var(--bg-primary)] px-4 py-2 rounded hover:opacity-80">Agregar Nueva Película</a>
   </div>
 </div>

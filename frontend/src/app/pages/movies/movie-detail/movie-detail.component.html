@@ -1,32 +1,32 @@
-<div class="container mx-auto p-4 text-white">
+<div class="container mx-auto p-4 text-[var(--text-primary)]">
   <div class="flex justify-between items-center mb-4">
     <div>
-      <h2 class="text-5xl font-bold">{{ movie.title }}</h2>
-      <p class="text-lg text-gray-400">{{ movie.releaseYear }} · {{ movie.duration }}</p>
+      <h2 class="text-5xl font-bold text-[var(--accent)]">{{ movie.title }}</h2>
+      <p class="text-lg text-[var(--text-secondary)]">{{ movie.releaseYear }} · {{ movie.duration }}</p>
     </div>
     <div class="flex space-x-6">
       <div class="flex flex-col items-center">
-        <span class="text-xs text-gray-400 uppercase">CALIFICACIÓN DE IMDb</span>
+        <span class="text-xs text-[var(--text-secondary)] uppercase">CALIFICACIÓN DE IMDb</span>
         <div class="flex items-center">
-          <span class="text-yellow-400 text-2xl font-bold">{{ movie.rating }}</span>
-          <span class="text-gray-400 text-sm">/10</span>
+          <span class="text-[var(--accent)] text-2xl font-bold">{{ movie.rating }}</span>
+          <span class="text-[var(--text-secondary)] text-sm">/10</span>
         </div>
-        <span class="text-gray-400 text-sm">{{ movie.votes }} votos</span>
+        <span class="text-[var(--text-secondary)] text-sm">{{ movie.votes }} votos</span>
       </div>
       <div class="flex flex-col items-center">
-        <span class="text-xs text-gray-400 uppercase">TU CALIFICACIÓN</span>
+        <span class="text-xs text-[var(--text-secondary)] uppercase">TU CALIFICACIÓN</span>
         <div class="flex items-center space-x-1">
           <ng-container *ngFor="let star of stars; let i = index">
             <button (click)="rateMovie(i + 1)">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-                   [ngClass]="{ 'text-yellow-400': userRating > i, 'text-gray-500': userRating <= i }"
+                   [ngClass]="{ 'text-[var(--accent)]': userRating > i, 'text-[var(--text-secondary)]': userRating <= i }"
                    viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 .587l3.668 7.431 8.208 1.191-5.938 5.789 1.403 8.184-7.341-3.863-7.341 3.863 1.403-8.184-5.938-5.789 8.208-1.191z"/>
               </svg>
             </button>
           </ng-container>
         </div>
-        <button class="text-blue-400 hover:underline text-sm mt-1" (click)="resetRating()">Calificar</button>
+        <button class="text-[var(--accent)] hover:underline text-sm mt-1" (click)="resetRating()">Calificar</button>
       </div>
     </div>
   </div>
@@ -36,11 +36,11 @@
       <img [src]="movie.mainImage" alt="{{ movie.title }}" class="w-full h-auto rounded-lg shadow-lg">
     </div>
     <div class="md:w-2/3 md:pl-6">
-      <p class="mb-4 text-gray-300">{{ movie.description }}</p>
+      <p class="mb-4 text-[var(--text-secondary)]">{{ movie.description }}</p>
       <h3 class="text-xl font-semibold mt-6 mb-2">Reparto:</h3>
       <ul class="list-disc pl-5 mb-4">
         <li *ngFor="let castMember of movie.cast">
-          <a [routerLink]="['/actors', castMember.actor.id]" class="text-blue-400 hover:underline">
+          <a [routerLink]="['/actors', castMember.actor.id]" class="text-[var(--accent)] hover:underline">
             {{ castMember.actor.name }} as {{ castMember.characterName }}
           </a>
         </li>
@@ -49,17 +49,14 @@
         <button (click)="editMovie()" class="bg-blue-500 text-white p-2 rounded mr-2">Editar</button>
         <button (click)="deleteMovie()" class="bg-red-500 text-white p-2 rounded">Eliminar</button>
       </div>
-      <!-- Formulario de edición (si isEditing es true) -->
       <div *ngIf="isEditing">
         <h2 class="text-2xl font-bold mb-4">Editar Película</h2>
         <form (ngSubmit)="onSubmit()" #movieForm="ngForm" class="max-w-lg">
-          <!-- (Include fields similar to the add form; for brevity, not repeated here) -->
           <div class="mb-4">
             <label for="title" class="block mb-2">Título:</label>
-            <input type="text" id="title" name="title" [(ngModel)]="movie.title" required class="w-full p-2 border rounded">
+            <input type="text" id="title" name="title" [(ngModel)]="movie.title" required class="w-full p-2 border rounded bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-color)]">
           </div>
-          <!-- Additional fields… -->
-          <button type="submit" class="bg-green-500 text-white p-2 rounded">Guardar</button>
+          <button type="submit" class="bg-[var(--accent)] text-[var(--bg-primary)] p-2 rounded hover:opacity-80">Guardar</button>
         </form>
       </div>
     </div>

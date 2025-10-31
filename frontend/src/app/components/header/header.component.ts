@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { BehaviorSubject } from 'rxjs';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -15,24 +15,20 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   isAdmin = false;
   username: string | null = null;
+  isDarkMode = true;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private themeService: ThemeService
+  ) {}
 
   ngOnInit(): void {
-    this.updateUserStatus(); // 📌 Cargar valores iniciales
-    this.isLoggedIn = this.authService.isLoggedIn();
-    this.isAdmin = this.authService.isAdmin();
-    this.username = localStorage.getItem('username');
+    this.updateUserStatus();
+    this.isDarkMode = this.themeService.isDarkMode();
 
-    // Suscribirse a cambios en el estado de autenticación
-    this.authService.isAdmin$.subscribe((isAdmin) => {
-      this.isAdmin = isAdmin;
-    });
-
-    // 📌 Suscribirse a cambios en el AuthService
-    this.authService.userStatus$.subscribe(() => {
-      this.updateUserStatus();
-    });
+    this.authService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin);
+    this.authService.userStatus$.subscribe(() => this.updateUserStatus());
   }
 
   updateUserStatus(): void {
@@ -45,5 +41,10 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigate(['/login']);
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+    this.isDarkMode = this.themeService.isDarkMode();
   }
 }
